@@ -87,10 +87,14 @@
 }
 </script>
 <style>
+ html { scroll-behavior: smooth; }
  body { margin: 0; background: #F2F7F6; }
  * { box-sizing: border-box; }
  a { color: #4E8B84; text-decoration: none; }
  a:hover { color: #9CD1CC; }
+ @media (max-width: 900px) {
+ .nav-anchor { display: none; }
+ }
  .cards-grid { grid-template-columns: 1fr; }
  @media (min-width: 721px) {
  .cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -123,6 +127,8 @@
  </div>
  </a>
  <div style="display: flex; align-items: center; gap: 22px;">
+ <a href="#metodologia" class="nav-anchor" style="color: #F2F7F6; font-weight: 600; font-size: 14px; text-decoration: none;">Cómo trabajo</a>
+ <a href="#resultados" class="nav-anchor" style="color: #F2F7F6; font-weight: 600; font-size: 14px; text-decoration: none;">Resultados</a>
  <a href="/productos" style="color: #F2F7F6; font-weight: 600; font-size: 14px; text-decoration: none;">Productos</a>
  <a href="/solicitud" onclick="plausible('Solicitar admisión')" style="background: #9CD1CC; color: #353E44; font-weight: 700; font-size: 14px; padding: 11px 24px; border-radius: 999px; display: inline-block; white-space: nowrap;">Solicitar admisión</a>
  </div>
@@ -161,7 +167,7 @@
  </section>
 
  <!-- SECTION 4: METODOLOGIA -->
- <section data-screen-label="04 Metodologia" style="background: #F2F7F6; padding: 100px 6vw;">
+ <section id="metodologia" data-screen-label="04 Metodologia" style="background: #F2F7F6; padding: 100px 6vw; scroll-margin-top: 80px;">
  <h2 style="font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; text-align: center; max-width: 780px; margin: 0 auto 30px; line-height: 1.25;">Soy arquitecto, no ejecutor: yo diseño, tú y tu equipo ejecutan.</h2>
  <p style="font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; max-width: 720px; margin: 0 auto 64px; text-align: center; color: #3f484d;">Te muestro exactamente qué hacer y superviso que se haga bien. Este método funciona porque tú te apropias del cambio, no porque yo lo haga por ti y me lo lleve cuando me voy. No estás solo en el camino: quedo disponible para resolver cualquier duda mientras tu equipo ejecuta.</p>
  <div class="steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto; text-align: center;">
@@ -268,7 +274,7 @@
  </section>
 
  <!-- SECTION 7: RESULTADOS -->
- <section data-screen-label="07 Resultados" style="background: #ffffff; padding: 100px 6vw;">
+ <section id="resultados" data-screen-label="07 Resultados" style="background: #ffffff; padding: 100px 6vw; scroll-margin-top: 80px;">
  <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; margin: 0 auto 20px;">Resultados, no promesas.</h2>
  <p style="font-size: 18px; text-align: center; max-width: 640px; margin: 0 auto 56px; color: #3f484d;">Cuatro negocios reales, con los mismos síntomas que los tuyos, antes y después de poner orden.</p>
  <div class="cards-grid" style="display: grid; gap: 24px; max-width: 1200px; margin: 0 auto;">
@@ -316,6 +322,13 @@
  <p style="font-size: 16px; line-height: 1.6; color: #3f484d; margin: 0;">Sí — sin visibilidad real de tus números no puedo diagnosticar nada. Por eso el proceso incluye un NDA: lo que veo de tu negocio se queda entre nosotros.</p>
  </div>
  </div>
+ </section>
+
+ <!-- SECTION 7.6: PRODUCTOS TEASER -->
+ <section data-screen-label="07.6 Productos teaser" style="background: #F2F7F6; padding: 90px 6vw; text-align: center;">
+ <h2 style="font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; max-width: 700px; margin: 0 auto 18px;">También construyo el software que sostiene ese orden.</h2>
+ <p style="color: #3f484d; font-size: clamp(16px, 1.8vw, 18px); line-height: 1.6; max-width: 620px; margin: 0 auto 36px;">PCM para finanzas y ACS para agenda y seguimiento de clientes — dos herramientas propias, pensadas para negocios como el tuyo.</p>
+ <a href="/productos" onclick="plausible('Ver Productos desde home')" style="background: #353E44; color: #F2F7F6; font-weight: 700; font-size: 15px; padding: 14px 30px; border-radius: 999px; display: inline-block;">Ver productos ↗</a>
  </section>
 
  <!-- SECTION 8: CTA FINAL -->
