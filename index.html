@@ -26,6 +26,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script defer data-domain="darwinoptima.com" src="https://plausible.io/js/script.js"></script>
 <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "ProfessionalService",
+ "name": "Darwin Optima",
+ "url": "https://darwinoptima.com/",
+ "image": "https://darwinoptima.com/og-image.png",
+ "description": "Consultoría de reordenamiento empresarial para dueños de negocios que quieren recuperar el control operativo y financiero de su empresa.",
+ "areaServed": "PE",
+ "address": {
+ "@type": "PostalAddress",
+ "addressLocality": "Lima",
+ "addressCountry": "PE"
+ },
+ "email": "augusto@darwinoptima.com",
+ "founder": { "@id": "https://darwinoptima.com/#augusto" }
+ },
+ {
+ "@type": "Person",
+ "@id": "https://darwinoptima.com/#augusto",
+ "name": "Augusto Balarezo",
+ "jobTitle": "Fundador, Darwin Optima",
+ "url": "https://darwinoptima.com/",
+ "sameAs": ["https://www.linkedin.com/in/augusto-balarezo-6608863/"]
+ },
+ {
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "¿Cuánto dura el proceso?",
+ "acceptedAnswer": { "@type": "Answer", "text": "Depende de cuántas áreas de tu negocio necesitan orden. Se define recién después del diagnóstico inicial." }
+ },
+ {
+ "@type": "Question",
+ "name": "¿Cuánto tiempo mío exige?",
+ "acceptedAnswer": { "@type": "Answer", "text": "El equipo del cliente ejecuta el día a día; se pide tiempo puntual para las sesiones de diagnóstico y revisión de avances." }
+ },
+ {
+ "@type": "Question",
+ "name": "¿Funciona 100% remoto?",
+ "acceptedAnswer": { "@type": "Answer", "text": "El trabajo se realiza desde Lima, Perú, con clientes en distintos países. La mayor parte es remoto, con videollamadas y herramientas colaborativas." }
+ },
+ {
+ "@type": "Question",
+ "name": "¿Qué pasa si mi equipo no ejecuta?",
+ "acceptedAnswer": { "@type": "Answer", "text": "El plan se diseña para ser ejecutable por el equipo del cliente tal como es hoy, con ajustes en las sesiones de seguimiento si algo no avanza." }
+ },
+ {
+ "@type": "Question",
+ "name": "¿Tengo que abrirte mis números?",
+ "acceptedAnswer": { "@type": "Answer", "text": "Sí, el diagnóstico requiere visibilidad real de las cifras del negocio. El proceso incluye un NDA." }
+ }
+ ]
+ }
+ ]
+}
+</script>
 <style>
  body { margin: 0; background: #F2F7F6; }
  * { box-sizing: border-box; }
@@ -55,7 +115,7 @@
 
  <!-- NAVBAR -->
  <nav data-screen-label="Navbar" style="position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 6vw; background: #353E44; flex-wrap: wrap; gap: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.15);">
- <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+ <a href="/" aria-label="Ir al inicio de Darwin Optima" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
  <svg width="30" height="36" viewBox="0 0 366 440" style="flex-shrink: 0; display: block;" xmlns="http://www.w3.org/2000/svg"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"></path></svg>
  <div style="display: flex; flex-direction: column; line-height: 1.1;">
  <span style="color: #F2F7F6; font-weight: 700; font-size: 18px; letter-spacing: 0.01em;">Darwin Optima</span>
@@ -74,10 +134,10 @@
  CONSULTORÍA DE REORDENAMIENTO EMPRESARIAL PARA DUEÑOS DE NEGOCIOS
  </div>
  <h1 style="color: #F2F7F6; font-size: clamp(34px, 5.5vw, 64px); font-weight: 800; line-height: 1.12; max-width: 900px; margin: 0 0 26px;">
- Sientes que el dinero se escapa y no sabes por dónde.
+ ¿Sientes que el dinero se escapa y no sabes por dónde?
  </h1>
  <p style="color: #c7cdd0; font-size: clamp(17px, 2vw, 21px); line-height: 1.6; max-width: 620px; margin: 0 0 42px;">
- Ayudo a gente que es muy buena en lo suyo, a recuperar el control de sus negocios y hacerlos crecer.
+ Ayudo a gente que es muy buena en lo suyo a recuperar el control de sus negocios y hacerlos crecer.
  </p>
  <a href="/solicitud" onclick="plausible('Solicitar admisión')" style="background: #9CD1CC; color: #353E44; font-weight: 700; font-size: 17px; padding: 18px 40px; border-radius: 999px; display: inline-block;">Solicitar admisión</a>
  </section>
@@ -245,7 +305,7 @@
  </div>
  <div>
  <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">¿Funciona 100% remoto?</h3>
- <p style="font-size: 16px; line-height: 1.6; color: #3f484d; margin: 0;">La mayor parte del trabajo se hace remoto, con videollamadas y herramientas colaborativas. Si hace falta una sesión presencial puntual, la coordinamos.</p>
+ <p style="font-size: 16px; line-height: 1.6; color: #3f484d; margin: 0;">Trabajo desde Lima, Perú, con clientes en distintos países. La mayor parte del trabajo se hace remoto, con videollamadas y herramientas colaborativas. Si hace falta una sesión presencial puntual en Lima, la coordinamos.</p>
  </div>
  <div>
  <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">¿Qué pasa si mi equipo no ejecuta?</h3>
@@ -263,16 +323,19 @@
  <h2 style="color: #F2F7F6; font-size: clamp(32px, 4.5vw, 50px); font-weight: 800; margin: 0 0 30px;">¿Encajamos?</h2>
  <p style="color: #c7cdd0; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; max-width: 640px; margin: 0 0 20px;">Trabajo con un número limitado de negocios a la vez, y reviso cada solicitud personalmente. Cuéntame sobre tu negocio y sobre ti — si encajamos, el siguiente paso es una propuesta hecha a tu medida.</p>
  <p style="color: #9CD1CC; font-size: 15px; font-weight: 600; margin: 0 0 44px;">Te respondo en menos de 24 horas.</p>
+ <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
  <a href="/solicitud" onclick="plausible('Solicitar admisión')" style="background: #9CD1CC; color: #353E44; font-weight: 700; font-size: 17px; padding: 18px 40px; border-radius: 999px; display: inline-block;">Solicitar admisión</a>
+ <a href="https://wa.me/51949196654?text=Hola%20Augusto%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Darwin%20Optima" onclick="plausible('WhatsApp')" target="_blank" rel="noopener" style="background: transparent; color: #F2F7F6; font-weight: 700; font-size: 17px; padding: 18px 40px; border-radius: 999px; display: inline-block; border: 2px solid #9CD1CC;">Escríbeme por WhatsApp</a>
+ </div>
  </section>
 
  <!-- FOOTER -->
  <footer data-screen-label="Footer" style="background: #262d32; padding: 48px 6vw; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
- <div style="display: flex; align-items: center; gap: 12px;">
+ <a href="/" aria-label="Ir al inicio de Darwin Optima" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
  <svg width="26" height="31" viewBox="0 0 366 440" style="flex-shrink: 0; display: block;" xmlns="http://www.w3.org/2000/svg"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"></path></svg>
  <span style="color: #F2F7F6; font-weight: 700; font-size: 17px;">Darwin Optima</span>
- </div>
- <span style="color: #9CD1CC; font-size: 13px; letter-spacing: 0.06em;">Order. Precision. Advantage.</span>
+ </a>
+ <span style="color: #9CD1CC; font-size: 13px; letter-spacing: 0.06em;">Lima, Perú · Order. Precision. Advantage.</span>
  <div style="display: flex; align-items: center; gap: 20px;">
  <a href="/productos" style="color: #c7cdd0; font-size: 14px;">Productos</a>
  <a href="/privacidad" style="color: #c7cdd0; font-size: 14px;">Privacidad</a>
