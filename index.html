@@ -112,6 +112,38 @@
  .bento-small { grid-column: span 2 / span 2 !important; }
  .steps-grid { grid-template-columns: 1fr !important; }
  }
+ /* Síntomas: tarjeta con icono y acento superior (distinta de las demás tarjetas del sitio) */
+ .sintoma { background: #ffffff; border-radius: 18px; padding: 30px 28px 32px; display: flex; flex-direction: column; gap: 18px; border-top: 4px solid #9CD1CC; }
+ .sintoma-icon { width: 48px; height: 48px; border-radius: 12px; background: #eaf6f4; color: #4E8B84; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+ .sintoma p { margin: 0; font-size: 18px; line-height: 1.55; font-weight: 500; }
+ .sintoma strong { color: #353E44; font-weight: 700; }
+ /* Metodología: línea de tiempo con badge numerado (sin tarjetas) */
+ .steps-grid { position: relative; }
+ .step { text-align: left; position: relative; }
+ .step-num { width: 46px; height: 46px; border-radius: 50%; background: #353E44; color: #9CD1CC; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; position: relative; z-index: 1; box-shadow: 0 0 0 6px #F2F7F6; }
+ @media (min-width: 1024px) {
+ .steps-grid::before { content: ''; position: absolute; top: 23px; left: 23px; right: 23px; height: 2px; background: #9CD1CC; }
+ }
+ @media (max-width: 720px) {
+ .step { padding-left: 62px; }
+ .step .step-num { position: absolute; left: 0; top: -4px; margin: 0; }
+ .step + .step { margin-top: 34px; }
+ }
+ /* Sobre mí: dos columnas en desktop, credenciales como fichas */
+ .about-grid { display: grid; grid-template-columns: 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; align-items: start; }
+ @media (min-width: 960px) { .about-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; } }
+ .cred-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+ @media (min-width: 560px) { .cred-grid { grid-template-columns: repeat(2, 1fr); } }
+ .cred { background: rgba(255,255,255,0.06); border: 1px solid rgba(156,209,204,0.25); border-radius: 16px; padding: 22px 22px 24px; }
+ .cred-lead { color: #9CD1CC; font-weight: 800; font-size: 24px; line-height: 1.1; margin: 0 0 8px; }
+ .cred p:not(.cred-lead) { color: #dfe4e6; font-size: 15px; line-height: 1.55; margin: 0; }
+ /* Bento: icono real por área */
+ .area-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+ .area-icon.dark { background: rgba(156,209,204,0.14); color: #9CD1CC; }
+ .area-icon.light { background: #ffffff; color: #4E8B84; }
+ /* Herramientas: dos tarjetas contrastadas */
+ .tools-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
+ @media (min-width: 900px) { .tools-grid { grid-template-columns: 1.2fr 1fr; } }
  </style>
 </head>
 <body>
@@ -149,55 +181,68 @@
  </section>
 
  <!-- SECTION 2: PROBLEMA -->
- <section data-screen-label="02 Problema" style="background: #F2F7F6; padding: 100px 6vw;">
- <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; max-width: 800px; margin: 0 auto 56px;">¿Te suena esto?</h2>
+ <section data-screen-label="02 Problema" style="background: #F2F7F6; padding: 90px 6vw 84px;">
+ <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; max-width: 800px; margin: 0 auto 48px;">¿Te suena esto?</h2>
  <div class="cards-grid" style="display: grid; gap: 24px; max-width: 1200px; margin: 0 auto;">
- <div style="background: #ffffff; border-radius: 18px; padding: 34px 30px; font-size: 19px; line-height: 1.55; font-weight: 500;">Operas a ciegas — no sabes qué tienes disponible ahora mismo — gente, tiempo, inventario.</div>
- <div style="background: #ffffff; border-radius: 18px; padding: 34px 30px; font-size: 19px; line-height: 1.55; font-weight: 500;">No tienes visibilidad de ingresos y egresos — el dinero entra y sale sin control.</div>
- <div style="background: #ffffff; border-radius: 18px; padding: 34px 30px; font-size: 19px; line-height: 1.55; font-weight: 500;">No puedes crecer aunque tengas la demanda — el desorden es el techo, no el mercado.</div>
- <div style="background: #ffffff; border-radius: 18px; padding: 34px 30px; font-size: 19px; line-height: 1.55; font-weight: 500;">Tienes costos inflados que ni percibes — pagas de más sin darte cuenta.</div>
+ <div class="sintoma">
+ <div class="sintoma-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/><path d="M9.9 5.1A10.4 10.4 0 0 1 12 5c5 0 9 4.5 10 7-0.5 1.2-1.5 2.7-2.9 4"/><path d="M6.6 6.6C4.3 8 2.7 10.2 2 12c1 2.5 5 7 10 7 1.5 0 2.9-.4 4.1-1"/></svg></div>
+ <p><strong>Operas a ciegas</strong> — no sabes qué tienes disponible ahora mismo: gente, tiempo, inventario.</p>
+ </div>
+ <div class="sintoma">
+ <div class="sintoma-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+ <p><strong>No tienes visibilidad de ingresos y egresos</strong> — el dinero entra y sale sin control.</p>
+ </div>
+ <div class="sintoma">
+ <div class="sintoma-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><path d="M12 21V9"/><path d="M7 14l5-5 5 5"/></svg></div>
+ <p><strong>No puedes crecer aunque tengas la demanda</strong> — el desorden es el techo, no el mercado.</p>
+ </div>
+ <div class="sintoma">
+ <div class="sintoma-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg></div>
+ <p><strong>Tienes costos inflados que ni percibes</strong> — pagas de más sin darte cuenta.</p>
+ </div>
  </div>
  </section>
 
  <!-- SECTION 3: PROPUESTA -->
- <section data-screen-label="03 Propuesta" style="background: #4E8B84; padding: 100px 6vw; text-align: center;">
+ <section data-screen-label="03 Propuesta" style="background: #4E8B84; padding: 90px 6vw; text-align: center;">
  <h2 style="color: #ffffff; font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; max-width: 780px; margin: 0 auto 36px; line-height: 1.25;">Tú eres experto en lo tuyo. Yo, en ordenar negocios.</h2>
  <p style="color: #eaf3f1; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; max-width: 760px; margin: 0 auto 54px;">Construiste tu empresa sobre tu talento — nadie te enseñó a gestionarla. Ahí es donde yo intervengo. Pongo orden en el caos: vas a saber exactamente a dónde va tu dinero, vas a poder aceptar más clientes sin que todo colapse, y vas a cortar las fugas que hoy ni ves.</p>
  <p style="color: #ffffff; font-size: clamp(24px, 3vw, 34px); font-weight: 700; max-width: 820px; margin: 0 auto; line-height: 1.35;">Tú sigues al frente de lo que amas; yo ordeno el negocio por detrás.</p>
  </section>
 
  <!-- SECTION 4: METODOLOGIA -->
- <section id="metodologia" data-screen-label="04 Metodologia" style="background: #F2F7F6; padding: 100px 6vw; scroll-margin-top: 80px;">
- <h2 style="font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; text-align: center; max-width: 780px; margin: 0 auto 30px; line-height: 1.25;">Soy arquitecto, no ejecutor: yo diseño, tú y tu equipo ejecutan.</h2>
- <p style="font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; max-width: 720px; margin: 0 auto 64px; text-align: center; color: #3f484d;">Te muestro exactamente qué hacer y superviso que se haga bien. Este método funciona porque tú te apropias del cambio, no porque yo lo haga por ti y me lo lleve cuando me voy. No estás solo en el camino: quedo disponible para resolver cualquier duda mientras tu equipo ejecuta.</p>
- <div class="steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto; text-align: center;">
- <div>
- <div style="color: #9CD1CC; font-size: 34px; font-weight: 800; margin-bottom: 12px;">01</div>
- <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">Diagnóstico</h3>
- <p style="font-size: 15px; line-height: 1.5; color: #3f484d; margin: 0;">Vemos juntos, área por área, dónde está el problema real.</p>
+ <section id="metodologia" data-screen-label="04 Metodologia" style="background: #F2F7F6; padding: 90px 6vw 84px; scroll-margin-top: 80px;">
+ <h2 style="font-size: clamp(28px, 3.6vw, 42px); font-weight: 800; text-align: center; max-width: 780px; margin: 0 auto 26px; line-height: 1.25;">Soy arquitecto, no ejecutor: yo diseño, tú y tu equipo ejecutan.</h2>
+ <p style="font-size: clamp(16px, 1.8vw, 19px); line-height: 1.65; max-width: 720px; margin: 0 auto 56px; text-align: center; color: #3f484d;">Te muestro exactamente qué hacer y superviso que se haga bien. Este método funciona porque tú te apropias del cambio, no porque yo lo haga por ti y me lo lleve cuando me voy. No estás solo en el camino: quedo disponible para resolver cualquier duda mientras tu equipo ejecuta.</p>
+ <div class="steps-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; max-width: 1080px; margin: 0 auto;">
+ <div class="step">
+ <div class="step-num">01</div>
+ <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">Diagnóstico</h3>
+ <p style="font-size: 15.5px; line-height: 1.55; color: #3f484d; margin: 0;">Vemos juntos, área por área, dónde está el problema real.</p>
  </div>
- <div>
- <div style="color: #9CD1CC; font-size: 34px; font-weight: 800; margin-bottom: 12px;">02</div>
- <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">Plan</h3>
- <p style="font-size: 15px; line-height: 1.5; color: #3f484d; margin: 0;">Te muestro exactamente qué hacer, paso a paso.</p>
+ <div class="step">
+ <div class="step-num">02</div>
+ <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">Plan</h3>
+ <p style="font-size: 15.5px; line-height: 1.55; color: #3f484d; margin: 0;">Te muestro exactamente qué hacer, paso a paso.</p>
  </div>
- <div>
- <div style="color: #9CD1CC; font-size: 34px; font-weight: 800; margin-bottom: 12px;">03</div>
- <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">Ejecución supervisada</h3>
- <p style="font-size: 15px; line-height: 1.5; color: #3f484d; margin: 0;">Tu equipo ejecuta, yo superviso que se haga bien.</p>
+ <div class="step">
+ <div class="step-num">03</div>
+ <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">Ejecución supervisada</h3>
+ <p style="font-size: 15.5px; line-height: 1.55; color: #3f484d; margin: 0;">Tu equipo ejecuta, yo superviso que se haga bien.</p>
  </div>
- <div>
- <div style="color: #9CD1CC; font-size: 34px; font-weight: 800; margin-bottom: 12px;">04</div>
- <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">Traspaso</h3>
- <p style="font-size: 15px; line-height: 1.5; color: #3f484d; margin: 0;">Te dejo herramientas de gestión y monitoreo para manejar tu negocio con seguridad.</p>
+ <div class="step">
+ <div class="step-num">04</div>
+ <h3 style="font-size: 19px; font-weight: 700; margin: 0 0 8px;">Traspaso</h3>
+ <p style="font-size: 15.5px; line-height: 1.55; color: #3f484d; margin: 0;">Te dejo herramientas de gestión y monitoreo — incluso software a medida, con IA, hecho para tu negocio — para que lo manejes con seguridad.</p>
  </div>
  </div>
  </section>
 
  <!-- SECTION 5: SOBRE MI -->
- <section data-screen-label="05 Sobre mi" style="background: #353E44; padding: 100px 6vw;">
- <div style="max-width: 820px; margin: 0 auto;">
- <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 36px;">
+ <section data-screen-label="05 Sobre mi" style="background: #353E44; padding: 90px 6vw;">
+ <div class="about-grid">
+ <div>
+ <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 32px;">
  <div style="width: 64px; height: 64px; border-radius: 50%; background: #9CD1CC; color: #353E44; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">AB</div>
  <div>
  <div style="color: #F2F7F6; font-weight: 700; font-size: 17px;">Augusto Balarezo</div>
@@ -207,66 +252,76 @@
  </div>
  </div>
  </div>
- <h2 style="color: #F2F7F6; font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; margin: 0 0 26px; line-height: 1.3;">El mismo orden, procesos y control que tienen las grandes empresas — sin que tengas que convertirte en una.</h2>
- <p style="color: #dfe4e6; font-size: 17px; line-height: 1.7; margin: 0 0 40px;">Antes de ser consultor, dirigí la estrategia de un negocio en Estados Unidos desde su formación — elevé sus ingresos operativos en 400% en los primeros tres años. Sé lo que es construir algo desde cero, no solo analizarlo desde afuera. Por eso, antes de tocar números o procesos, siempre hago la misma primera pregunta: ¿cuál es tu propósito con este negocio? Las empresas que más crecen no son las que persiguen solo la rentabilidad, sino las que tienen claro qué valor quieren dejarle a sus clientes, a su equipo y a su comunidad.</p>
- <p style="color: #9CD1CC; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; margin: 0 0 20px;">EL RESPALDO DETRÁS DE ESTA PROMESA:</p>
- <div style="display: flex; flex-direction: column; gap: 22px;">
- <p style="color: #dfe4e6; font-size: 18px; line-height: 1.6; margin: 0; padding-left: 22px; border-left: 3px solid #9CD1CC;">Executive MBA en una escuela de negocios de Canadá, clasificada #1 entre los programas MBA internacionales del país.</p>
- <p style="color: #dfe4e6; font-size: 18px; line-height: 1.6; margin: 0; padding-left: 22px; border-left: 3px solid #9CD1CC;">8 años en tecnología financiera y administración de activos — cartera de US$60M, +10% anual.</p>
- <p style="color: #dfe4e6; font-size: 18px; line-height: 1.6; margin: 0; padding-left: 22px; border-left: 3px solid #9CD1CC;">Banca de desarrollo multilateral — operaciones de mercado de capitales.</p>
- <p style="color: #dfe4e6; font-size: 18px; line-height: 1.6; margin: 0; padding-left: 22px; border-left: 3px solid #9CD1CC;">11 años de consultoría en reordenamiento empresarial: +45% productividad, 23% ahorro en capital, 9.95x incremento de efectivo en 12 meses.</p>
+ <h2 style="color: #F2F7F6; font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; margin: 0 0 22px; line-height: 1.3;">El mismo orden, procesos y control que tienen las grandes empresas — sin que tengas que convertirte en una.</h2>
+ <p style="color: #dfe4e6; font-size: 17px; line-height: 1.7; margin: 0 0 18px;">Antes de ser consultor, dirigí la estrategia de un negocio en Estados Unidos desde su formación — elevé sus ingresos operativos en 400% en los primeros tres años. Sé lo que es construir algo desde cero, no solo analizarlo desde afuera.</p>
+ <p style="color: #dfe4e6; font-size: 17px; line-height: 1.7; margin: 0;">Por eso, antes de tocar números o procesos, siempre hago la misma primera pregunta: <span style="color: #F2F7F6; font-weight: 600;">¿cuál es tu propósito con este negocio?</span> Las empresas que más crecen no son las que persiguen solo la rentabilidad, sino las que tienen claro qué valor quieren dejarle a sus clientes, a su equipo y a su comunidad.</p>
+ </div>
+ <div>
+ <p style="color: #9CD1CC; font-weight: 700; font-size: 14px; letter-spacing: 0.08em; margin: 0 0 18px;">EL RESPALDO DETRÁS DE ESTA PROMESA</p>
+ <div class="cred-grid">
+ <div class="cred">
+ <p class="cred-lead">Executive MBA</p>
+ <p>Escuela de negocios de Canadá, clasificada #1 entre los programas MBA internacionales del país.</p>
+ </div>
+ <div class="cred">
+ <p class="cred-lead">8 años</p>
+ <p>En tecnología financiera y administración de activos — cartera de US$60M, +10% anual.</p>
+ </div>
+ <div class="cred">
+ <p class="cred-lead">Banca multilateral</p>
+ <p>Banca de desarrollo — operaciones de mercado de capitales.</p>
+ </div>
+ <div class="cred">
+ <p class="cred-lead">11 años</p>
+ <p>De consultoría en reordenamiento empresarial: +45% productividad, 23% ahorro en capital, 9.95x incremento de efectivo en 12 meses.</p>
+ </div>
+ </div>
  </div>
  </div>
  </section>
 
  <!-- SECTION 6: AREAS DE INTERVENCION - BENTO GRID -->
- <section data-screen-label="06 Areas de intervencion" style="background: #ffffff; padding: 100px 6vw;">
- <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; margin: 0 auto 56px;">Dónde intervengo</h2>
+ <section data-screen-label="06 Areas de intervencion" style="background: #ffffff; padding: 90px 6vw;">
+ <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; margin: 0 auto 48px;">Dónde intervengo</h2>
  <div class="bento-grid" style="display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: minmax(120px, auto); gap: 20px; max-width: 1200px; margin: 0 auto;">
 
  <!-- GRANDE: Operaciones -->
- <div class="bento-big" style="grid-column: span 3 / span 3; background: #353E44; border-radius: 22px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 14px;">
- <svg width="30" height="30" sc-camel-view-box="0 0 30 30">
- <circle cx="15" cy="15" r="13.5" fill="none" stroke="#9CD1CC" stroke-width="2"></circle>
- <circle cx="15" cy="15" r="7.5" fill="none" stroke="#9CD1CC" stroke-width="2"></circle>
- </svg>
+ <div class="bento-big" style="grid-column: span 3 / span 3; background: #353E44; border-radius: 22px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+ <div class="area-icon dark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2" fill="#353E44"/><circle cx="15" cy="12" r="2" fill="#353E44"/><circle cx="7" cy="18" r="2" fill="#353E44"/></svg></div>
  <h3 style="color: #F2F7F6; font-size: 26px; font-weight: 700; margin: 0;">Operaciones</h3>
  <p style="color: #c7cdd0; font-size: 18px; line-height: 1.5; margin: 0; max-width: 640px;">Cuánto produces, en cuánto tiempo, y sin que dependa solo de ti.</p>
  </div>
 
  <!-- GRANDE: Finanzas -->
- <div class="bento-big" style="grid-column: span 3 / span 3; background: #353E44; border-radius: 22px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 14px;">
- <svg width="30" height="30" sc-camel-view-box="0 0 30 30">
- <circle cx="15" cy="15" r="13.5" fill="none" stroke="#9CD1CC" stroke-width="2"></circle>
- <circle cx="15" cy="15" r="7.5" fill="none" stroke="#9CD1CC" stroke-width="2"></circle>
- </svg>
+ <div class="bento-big" style="grid-column: span 3 / span 3; background: #353E44; border-radius: 22px; padding: 44px; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+ <div class="area-icon dark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M14 8l4-4 3 3"/></svg></div>
  <h3 style="color: #F2F7F6; font-size: 26px; font-weight: 700; margin: 0;">Finanzas</h3>
  <p style="color: #c7cdd0; font-size: 18px; line-height: 1.5; margin: 0; max-width: 640px;">Cuánto dinero entra, cuánto sale, y qué te queda de verdad.</p>
  </div>
 
  <!-- PEQUEÑAS: 5 tarjetas -->
  <div class="bento-small" style="grid-column: span 2 / span 2; background: #F2F7F6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 140px;">
- <svg width="24" height="24" sc-camel-view-box="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#4E8B84" stroke-width="2"></circle></svg>
+ <div class="area-icon light" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
  <h3 style="font-size: 18px; font-weight: 700; margin: 0;">Comercialización</h3>
  <p style="color: #3f484d; font-size: 15px; line-height: 1.5; margin: 0;">Cuántos clientes te llegan, por qué canal, y cuántos terminan comprando.</p>
  </div>
  <div class="bento-small" style="grid-column: span 2 / span 2; background: #F2F7F6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 140px;">
- <svg width="24" height="24" sc-camel-view-box="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#4E8B84" stroke-width="2"></circle></svg>
+ <div class="area-icon light" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
  <h3 style="font-size: 18px; font-weight: 700; margin: 0;">Sistemas e Información</h3>
  <p style="color: #3f484d; font-size: 15px; line-height: 1.5; margin: 0;">Qué información tienes, dónde vive, y si puedes confiar en ella para decidir.</p>
  </div>
  <div class="bento-small" style="grid-column: span 2 / span 2; background: #F2F7F6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 140px;">
- <svg width="24" height="24" sc-camel-view-box="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#4E8B84" stroke-width="2"></circle></svg>
+ <div class="area-icon light" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.5c3 0 6 1.9 6 5.5"/></svg></div>
  <h3 style="font-size: 18px; font-weight: 700; margin: 0;">Administración de Personal</h3>
  <p style="color: #3f484d; font-size: 15px; line-height: 1.5; margin: 0;">Quién hace qué, cuánto cuesta cada uno, y si el equipo rinde lo que debería.</p>
  </div>
  <div class="bento-small" style="grid-column: span 3 / span 3; background: #F2F7F6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 140px;">
- <svg width="24" height="24" sc-camel-view-box="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#4E8B84" stroke-width="2"></circle></svg>
+ <div class="area-icon light" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>
  <h3 style="font-size: 18px; font-weight: 700; margin: 0;">Estrategia, Dirección y Sucesión</h3>
  <p style="color: #3f484d; font-size: 15px; line-height: 1.5; margin: 0;">Hacia dónde va tu negocio, quién decide, y qué pasa el día que tú no estés.</p>
  </div>
  <div class="bento-small" style="grid-column: span 3 / span 3; background: #F2F7F6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 140px;">
- <svg width="24" height="24" sc-camel-view-box="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#4E8B84" stroke-width="2"></circle></svg>
+ <div class="area-icon light" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
  <h3 style="font-size: 18px; font-weight: 700; margin: 0;">IA y Automatización</h3>
  <p style="color: #3f484d; font-size: 15px; line-height: 1.5; margin: 0;">Qué tareas repetitivas te quitan tiempo que podrías usar para crecer.</p>
  </div>
@@ -274,23 +329,23 @@
  </section>
 
  <!-- SECTION 7: RESULTADOS -->
- <section id="resultados" data-screen-label="07 Resultados" style="background: #ffffff; padding: 100px 6vw; scroll-margin-top: 80px;">
+ <section id="resultados" data-screen-label="07 Resultados" style="background: #F2F7F6; padding: 90px 6vw; scroll-margin-top: 80px;">
  <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; margin: 0 auto 20px;">Resultados, no promesas.</h2>
  <p style="font-size: 18px; text-align: center; max-width: 640px; margin: 0 auto 56px; color: #3f484d;">Cuatro negocios reales, con los mismos síntomas que los tuyos, antes y después de poner orden.</p>
  <div class="cards-grid" style="display: grid; gap: 24px; max-width: 1200px; margin: 0 auto;">
- <div style="background: #F2F7F6; border-radius: 18px; padding: 34px;">
+ <div style="background: #ffffff; border-radius: 18px; padding: 34px; border-top: 4px solid #4E8B84;">
  <div style="color: #4E8B84; font-size: 40px; font-weight: 800; margin-bottom: 16px;">9.95x</div>
  <p style="font-size: 16px; line-height: 1.55; margin: 0;">Grupo de eventos corporativos (+20 años en el mercado): sin visibilidad de qué eventos eran rentables, mermas sin control. Resultado: 9.95x de incremento en el nivel de efectivo en 12 meses.</p>
  </div>
- <div style="background: #F2F7F6; border-radius: 18px; padding: 34px;">
+ <div style="background: #ffffff; border-radius: 18px; padding: 34px; border-top: 4px solid #4E8B84;">
  <div style="color: #4E8B84; font-size: 40px; font-weight: 800; margin-bottom: 16px;">5x</div>
  <p style="font-size: 16px; line-height: 1.55; margin: 0;">Agencia de marketing digital: cerraba el mes en números rojos, sin control de deuda. Resultado: números positivos en 3 meses, productividad duplicada en 6 meses, ventas multiplicadas por 5x.</p>
  </div>
- <div style="background: #F2F7F6; border-radius: 18px; padding: 34px;">
+ <div style="background: #ffffff; border-radius: 18px; padding: 34px; border-top: 4px solid #4E8B84;">
  <div style="color: #4E8B84; font-size: 40px; font-weight: 800; margin-bottom: 16px;">US$7,911</div>
  <p style="font-size: 16px; line-height: 1.55; margin: 0;">Centro psicopedagógico: no había forma de ver entradas y salidas de dinero, ni controlar cuentas por cobrar o pagar. Resultado: control total de flujo de caja por primera vez — se detectó y cubrió a tiempo un déficit de US$7,911 que antes hubiera pasado inadvertido.</p>
  </div>
- <div style="background: #F2F7F6; border-radius: 18px; padding: 34px;">
+ <div style="background: #ffffff; border-radius: 18px; padding: 34px; border-top: 4px solid #4E8B84;">
  <div style="color: #4E8B84; font-size: 40px; font-weight: 800; margin-bottom: 16px;">+20%</div>
  <p style="font-size: 16px; line-height: 1.55; margin: 0;">Café-bar: ventas cayendo dos años consecutivos, deuda familiar de US$23,500, data financiera desordenada. Resultado: al ordenar los números y el mix comercial, el primer semestre del año 4 ya proyectaba +20% más ventas que el año anterior — su nivel más alto en la serie histórica.</p>
  </div>
@@ -298,7 +353,7 @@
  </section>
 
  <!-- SECTION 7.5: FAQ -->
- <section data-screen-label="07.5 FAQ" style="background: #F2F7F6; padding: 100px 6vw;">
+ <section data-screen-label="07.5 FAQ" style="background: #ffffff; padding: 90px 6vw;">
  <h2 style="font-size: clamp(30px, 4vw, 46px); font-weight: 800; text-align: center; margin: 0 auto 56px;">Preguntas frecuentes</h2>
  <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px;">
  <div>
@@ -324,11 +379,23 @@
  </div>
  </section>
 
- <!-- SECTION 7.6: PRODUCTOS TEASER -->
- <section data-screen-label="07.6 Productos teaser" style="background: #F2F7F6; padding: 90px 6vw; text-align: center;">
- <h2 style="font-size: clamp(26px, 3.4vw, 38px); font-weight: 800; max-width: 700px; margin: 0 auto 18px;">También construyo el software que sostiene ese orden.</h2>
- <p style="color: #3f484d; font-size: clamp(16px, 1.8vw, 18px); line-height: 1.6; max-width: 620px; margin: 0 auto 36px;">PCM para finanzas y ACS para agenda y seguimiento de clientes — dos herramientas propias, pensadas para negocios como el tuyo.</p>
- <a href="/productos" onclick="plausible('Ver Productos desde home')" style="background: #353E44; color: #F2F7F6; font-weight: 700; font-size: 15px; padding: 14px 30px; border-radius: 999px; display: inline-block;">Ver productos ↗</a>
+ <!-- SECTION 7.6: HERRAMIENTAS (software a medida + productos propios) -->
+ <section data-screen-label="07.6 Herramientas" style="background: #F2F7F6; padding: 90px 6vw;">
+ <h2 style="font-size: clamp(26px, 3.4vw, 40px); font-weight: 800; max-width: 760px; margin: 0 auto 16px; text-align: center; line-height: 1.25;">El orden se sostiene con herramientas, no con buenas intenciones.</h2>
+ <p style="color: #3f484d; font-size: clamp(16px, 1.8vw, 18px); line-height: 1.6; max-width: 640px; margin: 0 auto 44px; text-align: center;">Un plan en PowerPoint se olvida. Por eso, cuando hace falta, construyo la herramienta exacta para que el control no dependa de mí ni de la memoria de nadie.</p>
+ <div class="tools-grid">
+ <div style="background: #353E44; border-radius: 22px; padding: 40px 38px; display: flex; flex-direction: column; gap: 16px;">
+ <div style="color: #9CD1CC; font-weight: 700; font-size: 13px; letter-spacing: 0.1em;">A MEDIDA, PARA TU NEGOCIO</div>
+ <h3 style="color: #F2F7F6; font-size: clamp(22px, 2.4vw, 27px); font-weight: 800; margin: 0; line-height: 1.25;">Software con IA construido alrededor de tu problema específico.</h3>
+ <p style="color: #c7cdd0; font-size: 17px; line-height: 1.6; margin: 0;">Paneles de control, automatizaciones, alertas o asistentes con IA diseñados según cómo funciona tu negocio — no al revés. No es un producto aparte: forma parte del proyecto de reordenamiento y se queda contigo cuando termino.</p>
+ </div>
+ <div style="background: #ffffff; border-radius: 22px; padding: 40px 38px; display: flex; flex-direction: column; gap: 16px;">
+ <div style="color: #4E8B84; font-weight: 700; font-size: 13px; letter-spacing: 0.1em;">PRODUCTOS PROPIOS</div>
+ <h3 style="font-size: clamp(22px, 2.4vw, 27px); font-weight: 800; margin: 0; line-height: 1.25;">PCM y ACS</h3>
+ <p style="color: #3f484d; font-size: 17px; line-height: 1.6; margin: 0; flex-grow: 1;">Finanzas, y agenda con seguimiento de clientes — dos herramientas propias, pensadas para negocios como el tuyo.</p>
+ <a href="/productos" onclick="plausible('Ver Productos desde home')" style="background: #353E44; color: #F2F7F6; font-weight: 700; font-size: 15px; padding: 13px 26px; border-radius: 999px; display: inline-block; width: fit-content;">Ver productos ↗</a>
+ </div>
+ </div>
  </section>
 
  <!-- SECTION 8: CTA FINAL -->
