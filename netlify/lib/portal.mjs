@@ -202,7 +202,7 @@ export async function sendLoginEmail(to, nombre, link) {
 <p style="margin:0 0 28px"><a href="${link}" style="display:inline-block;background:#9CD1CC;color:#1F2529;text-decoration:none;font-weight:600;padding:14px 26px">Entrar a mi portal →</a></p>
 <p style="margin:0 0 8px;font-size:13px;color:#5B6670">Si no pediste este acceso, ignora este correo. Nadie puede entrar sin abrir este enlace.</p>
 </td></tr>
-<tr><td style="padding:20px 32px 28px;font-size:12px;color:#8A939A;border-top:1px solid #EDEFF1">Darwin Optima · Order. Precision. Advantage.</td></tr>
+<tr><td style="padding:20px 32px 28px;font-size:12px;color:#8A939A;border-top:1px solid #EDEFF1">Darwin Optima · Orden. Precisión. Ventaja.</td></tr>
 </table></td></tr></table></body></html>`;
   const text = `${saludo}\n\nEste es tu enlace para entrar a tu portal de cliente (vence en ${LOGIN_MINUTES} minutos):\n${link}\n\nSi no pediste este acceso, ignora este correo.\n\nDarwin Optima`;
   const r = await fetch('https://api.resend.com/emails', {
