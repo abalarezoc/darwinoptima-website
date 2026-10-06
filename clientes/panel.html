@@ -112,6 +112,7 @@ td a.dl{color:var(--teal);font-size:13px;border-bottom:1px solid currentColor}
 .dotgrid circle{fill:#9CD1CC;transform:translate(var(--dx),var(--dy));opacity:.25;transform-box:fill-box;transform-origin:center;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) var(--dl) forwards,breathe var(--b) ease-in-out calc(var(--dl) + 2.4s) infinite}
 .dotgrid circle.on{fill:#F4F4F1}
 .dotgrid circle.off{fill:#4B5960}
+.band .dotgrid circle.tc{fill:var(--c)}
 @keyframes settle{to{transform:translate(0,0);opacity:1}}
 @keyframes breathe{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,0) scale(1.35)}}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -228,6 +229,9 @@ function render(d){
  // marcar puntos encendidos segun avance
  var dots=document.querySelectorAll('.band .dotgrid circle'),on=Math.round(dots.length*overall/100);
  for(var k=0;k<dots.length;k++){dots[k].classList.add(k<on?'on':'off')}
+ // colores de las herramientas del cliente: pocos puntos, solo dentro del avance
+ var tcs=d.herramientas.map(function(t){return TC[t.nombre]}).filter(Boolean),nn=tcs.length*2;
+ for(var j=0;j<nn&&on>0;j++){var el=dots[Math.min(on-1,Math.round(on/(nn+1)*(j+1)))];if(el){el.style.setProperty('--c',tcs[j%tcs.length]);el.classList.add('tc')}}
  document.querySelectorAll('#main .panel').forEach(function(el,i){el.style.setProperty('--d',(0.12+i*0.08)+'s')});
  requestAnimationFrame(function(){requestAnimationFrame(function(){
   var rv=document.getElementById('ringv');if(rv)rv.style.strokeDashoffset=rv.getAttribute('data-to');
