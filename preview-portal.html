@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Acceso clientes | Darwin Optima</title>
+<title>Demo del portal | Darwin Optima</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,42 +100,59 @@ td a.dl{color:var(--teal);font-size:13px;border-bottom:1px solid currentColor}
 .mob{display:none}
 @media(max-width:980px){#app{grid-template-columns:1fr}.side{display:none}main{padding:24px 20px 60px}.grid,.tools{grid-template-columns:1fr}.stages{grid-template-columns:1fr 1fr}.stg:nth-child(3){padding-left:0}.mob{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;padding:16px 20px;font-weight:600}.mob button{background:none;border:0;color:var(--mute-d);font:13px var(--sans)}table .hide{display:none}}
 .banner{font-size:12px;background:#FBF1DF;color:#8A5A12;text-align:center;padding:8px}
+.empty{color:var(--mute);font-size:14px;padding:6px 0}
+#app.ready{display:grid}
+.loading{min-height:100vh;display:grid;place-items:center;color:var(--mute);font-size:14px}
+.sent.err2{background:#FBEAEA;border-left-color:#A33}
+.btn[disabled]{opacity:.6;cursor:wait}
+@media(max-width:980px){.top .meta{text-align:left}}
+
+/* --- vida: animaciones --- */
+.dotgrid .gl line{stroke:rgba(156,209,204,.13);stroke-width:1}
+.dotgrid circle{fill:#9CD1CC;transform:translate(var(--dx),var(--dy));opacity:.25;transform-box:fill-box;transform-origin:center;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) var(--dl) forwards,breathe var(--b) ease-in-out calc(var(--dl) + 2.4s) infinite}
+.dotgrid circle.on{fill:#F4F4F1}
+.dotgrid circle.off{fill:#4B5960}
+@keyframes settle{to{transform:translate(0,0);opacity:1}}
+@keyframes breathe{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,0) scale(1.35)}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.dotgrid circle{animation:none;transform:none;opacity:1}.panel,.band{animation:none!important}}
+
+body{background-color:var(--paper);background-image:radial-gradient(rgba(31,37,41,.06) 1px,transparent 1px);background-size:22px 22px}
+.panel{animation:up .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s);transition:box-shadow .25s,transform .25s}
+.panel:hover{box-shadow:0 10px 30px -18px rgba(31,37,41,.35)}
+.band{position:relative;overflow:hidden;background:var(--ink);color:#F4F4F1;padding:40px 44px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:32px;animation:up .6s cubic-bezier(.2,.7,.2,1) both}
+.band h1{font-size:44px;line-height:1.05;margin-top:10px;color:#fff}
+.band .eyebrow{color:var(--mint)}
+.band .meta{font-size:13px;color:var(--mute-d);margin-top:16px}
+.band .dotgrid{position:absolute;right:190px;top:50%;width:300px;height:300px;transform:translateY(-50%);opacity:.55;pointer-events:none}
+.ring{position:relative;width:150px;height:150px;flex-shrink:0;z-index:1}
+.ring svg{width:150px;height:150px;transform:rotate(-90deg)}
+.ring .trk{fill:none;stroke:rgba(244,244,241,.12);stroke-width:9}
+.ring .val{fill:none;stroke:var(--mint);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1) .4s}
+.ring .lbl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .lbl b{font-family:var(--serif);font-weight:400;font-size:38px;line-height:1;color:#fff}
+.ring .lbl span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d);margin-top:6px}
+.stg .bar{position:relative;overflow:hidden;background:#E3E7E8!important}
+.stg .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--teal);transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.stg.now .bar i{background:linear-gradient(90deg,var(--teal),var(--mint))}
+.stg.now .n::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-left:8px;vertical-align:1px;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(156,209,204,.7)}50%{box-shadow:0 0 0 6px rgba(156,209,204,0)}}
+.kv b{color:var(--ink)}
+.kv div:first-child b{color:var(--teal)}
+.chip{display:inline-block;margin-top:14px;font-size:12px;font-weight:500;background:rgba(156,209,204,.16);color:var(--mint);padding:5px 12px;border-radius:20px}
+.tool{position:relative;transition:transform .25s,box-shadow .25s,border-color .25s}
+.tool::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--tc,#9CD1CC);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.tool:hover{transform:translateY(-3px);box-shadow:0 14px 30px -20px rgba(31,37,41,.45)}
+.tool:hover::before{transform:scaleX(1)}
+.tool em{transition:letter-spacing .25s}.tool:hover em{letter-spacing:.04em}
+.row.task{transition:background .2s}.row.task:hover{background:rgba(156,209,204,.08)}
+.side a.on{box-shadow:inset 2px 0 0 var(--mint)}
+@media(max-width:980px){.band{flex-direction:column;align-items:flex-start;padding:30px 24px}.band .dotgrid{display:none}.band h1{font-size:34px}.ring{align-self:center}}
 </style>
 </head>
 <body>
-
-<!-- ===== LOGIN ===== -->
-<div id="login">
- <div class="l-brand">
-  <a href="/" style="display:flex;gap:12px;align-items:center;font-weight:600">
-   <svg width="24" height="29" viewBox="0 0 366 440" aria-hidden="true"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>Darwin Optima</a>
-  <div>
-   <p class="eyebrow" style="color:var(--mint);margin-bottom:18px">Portal de clientes</p>
-   <h1>Tu negocio, ordenado y a la vista.</h1>
-   <p>El avance de tu proyecto, tus herramientas, tus documentos y tu facturación, en un solo lugar privado.</p>
-  </div>
-  <p class="foot">Acceso exclusivo para clientes admitidos · Información protegida por NDA</p>
-  <svg class="art" viewBox="0 0 366 440" aria-hidden="true"><path fill="none" stroke="#9CD1CC" stroke-width="2" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>
- </div>
- <div class="l-form">
-  <div class="l-card">
-   <p class="eyebrow">Acceso clientes</p>
-   <h2>Ingresa a tu espacio</h2>
-   <p class="sub">Escribe el correo que registraste con nosotros. Te enviaremos un enlace seguro para entrar, sin contraseña.</p>
-   <form id="f" novalidate>
-    <label for="em">Correo electrónico</label>
-    <input id="em" type="email" placeholder="nombre@tuempresa.com" autocomplete="email">
-    <p class="err" id="er">Escribe un correo válido.</p>
-    <button class="btn" type="submit">Enviarme el enlace de acceso <span aria-hidden="true">→</span></button>
-   </form>
-   <div class="sent" id="sent">Listo. Si tu correo está registrado, en unos segundos recibirás un enlace para entrar. Revisa también la carpeta de spam.</div>
-   <p class="hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F7D76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><rect x="5" y="11" width="14" height="10" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Solo tú ves la información de tu negocio. ¿Aún no eres cliente? <a href="/solicitud" style="color:var(--teal);border-bottom:1px solid currentColor">Solicita admisión</a></p>
-   <button class="demo" onclick="show()">Ver demo del portal →</button>
-  </div>
- </div>
-</div>
-
-<!-- ===== APP ===== -->
+<div style="position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:99;font:500 12px Inter,system-ui,sans-serif;background:#FBF1DF;color:#8A5A12;padding:8px 16px;border-radius:20px;box-shadow:0 6px 20px -10px rgba(0,0,0,.3)">Vista de demostración con datos ficticios · <a href="/clientes" style="color:#8A5A12;text-decoration:underline">ver pantalla de acceso</a></div>
+<div class="loading" id="ld">Cargando tu portal…</div>
 <div id="app">
  <aside class="side">
   <div class="brand"><svg width="20" height="24" viewBox="0 0 366 440" aria-hidden="true"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>Darwin Optima</div>
@@ -144,94 +161,85 @@ td a.dl{color:var(--teal);font-size:13px;border-bottom:1px solid currentColor}
   <a href="#herramientas"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 21h8"/></svg>Herramientas</a>
   <a href="#documentos"><svg viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>Documentos</a>
   <a href="#facturacion"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M3 10h18M7 15h4"/></svg>Facturación</a>
-  <div class="me"><b>Lucía Ramos</b>Estudio Ramos · Arquitectura<br><button onclick="out()">Cerrar sesión</button></div>
+  <div class="me"><b id="me-n"></b><span id="me-e"></span><br><a href="/clientes" style="display:inline-block;padding:0;margin-top:10px;color:var(--mute-d);font-size:13px">Cerrar sesión</a></div>
  </aside>
  <div>
-  <div class="banner">Vista de demostración con datos ficticios</div>
-  <div class="mob"><span>Darwin Optima</span><button onclick="out()">Salir</button></div>
-  <main>
-   <div class="top" id="resumen">
-    <div><p class="eyebrow">Estudio Ramos · Proyecto de reordenamiento</p><h1>Hola, Lucía.</h1></div>
-    <p class="meta">Consultor: Augusto Balarezo<br>Última actualización: 6 oct 2026</p>
-   </div>
-
-   <div class="grid">
-    <section class="panel" id="avance">
-     <div class="ph"><h3>Avance del proyecto</h3><span class="pill p-ok">En curso · semana 7 de 16</span></div>
-     <div class="stages">
-      <div class="stg done"><div class="bar"></div><span class="n">01</span><b>Diagnóstico</b><span>Completado</span></div>
-      <div class="stg done"><div class="bar"></div><span class="n">02</span><b>Plan</b><span>Aprobado 22 sep</span></div>
-      <div class="stg now"><div class="bar"></div><span class="n">03</span><b>Ejecución supervisada</b><span>55% completado</span></div>
-      <div class="stg"><div class="bar"></div><span class="n">04</span><b>Traspaso</b><span>Previsto dic 2026</span></div>
-     </div>
-     <div class="kv">
-      <div><b>18 / 31</b><span>acciones del plan cumplidas</span></div>
-      <div><b>3</b><span>áreas en intervención</span></div>
-      <div><b>−14%</b><span>costos fijos vs. inicio</span></div>
-     </div>
-    </section>
-    <section class="panel next">
-     <p class="eyebrow" style="color:var(--mint)">Próxima sesión</p>
-     <p class="when">Jueves 9 de octubre</p>
-     <p class="s">10:00 a.m. · Revisión de flujo de caja y precios</p>
-     <a href="#">Agregar a mi calendario</a>
-     <div style="border-top:1px solid var(--line-d);margin-top:26px;padding-top:20px">
-      <p class="eyebrow" style="color:var(--mint);margin-bottom:8px">Mensaje de Augusto</p>
-      <p class="s" style="color:#DDE3E5">Buen avance con el control de proyectos. Esta semana el foco es cerrar la lista de precios por tipo de obra.</p>
-     </div>
-    </section>
-   </div>
-
-   <section class="panel">
-    <div class="ph"><h3>Pendientes de tu equipo</h3><span class="s" style="font-size:13px;color:var(--mute)">3 de 5 abiertos</span></div>
-    <div class="row task"><span class="chk"></span><div style="flex:1"><p class="t">Cargar facturas de proveedores de septiembre</p><p class="s">Responsable: Marco · vence 8 oct</p></div><span class="pill p-wait">Esta semana</span></div>
-    <div class="row task"><span class="chk"></span><div style="flex:1"><p class="t">Definir precio por m² para remodelaciones</p><p class="s">Responsable: Lucía · vence 9 oct</p></div><span class="pill p-wait">Esta semana</span></div>
-    <div class="row task"><span class="chk"></span><div style="flex:1"><p class="t">Registrar horas por proyecto en Tarifa Justa</p><p class="s">Responsable: todo el equipo · diario</p></div><span class="pill p-new">Hábito</span></div>
-    <div class="row task"><span class="chk ok"></span><div style="flex:1"><p class="t done">Separar cuentas personales y del estudio</p><p class="s">Completado 30 sep</p></div></div>
-    <div class="row task"><span class="chk ok"></span><div style="flex:1"><p class="t done">Inventario de equipos y licencias</p><p class="s">Completado 24 sep</p></div></div>
-   </section>
-
-   <section class="panel" id="herramientas">
-    <div class="ph"><h3>Tus herramientas</h3><a href="/productos">Qué hace cada una</a></div>
-    <div class="tools">
-     <a class="tool" href="#"><span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: #2C5F8A; flex-shrink: 0; margin-bottom: 12px;"> <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="15" width="2.6" height="6" rx="1" fill="#ffffff" opacity="0.55"></rect><rect x="10.7" y="11" width="2.6" height="10" rx="1" fill="#ffffff" opacity="0.55"></rect><rect x="16.4" y="6" width="2.6" height="15" rx="1" fill="#ffffff" opacity="0.55"></rect><path d="M 3 16 L 10.5 9 L 14 11.5 L 21 4" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M 15.5 4 L 21 4 L 21 9.5" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span><b>CapitalOptima</b><span>Tus estados financieros en vivo</span><em>Abrir →</em></a>
-     <a class="tool" href="#"><span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: #12151C; flex-shrink: 0; margin-bottom: 12px;"> <svg width="21" height="22" viewBox="0 0 100 110" aria-hidden="true"><line x1="14" y1="10" x2="14" y2="80" stroke="#F5F1E4" stroke-width="9" stroke-linecap="round"></line><line x1="34" y1="10" x2="34" y2="80" stroke="#F5F1E4" stroke-width="9" stroke-linecap="round"></line><line x1="54" y1="10" x2="54" y2="80" stroke="#F5F1E4" stroke-width="9" stroke-linecap="round"></line><line x1="74" y1="10" x2="74" y2="80" stroke="#E0A526" stroke-width="9" stroke-linecap="round"></line><line x1="4" y1="80" x2="88" y2="8" stroke="#5CC698" stroke-width="11" stroke-linecap="round"></line></svg> </span><b>Tarifa Justa</b><span>Horas por proyecto y facturación</span><em>Abrir →</em></a>
-     <a class="tool" href="#"><span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: #33386B; flex-shrink: 0; margin-bottom: 12px;"> <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2.4" fill="#C14A33"></rect><rect x="13" y="2" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"></rect><rect x="2" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"></rect><rect x="13" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"></rect></svg> </span><b>Quadrant</b><span>Pendientes priorizados del equipo</span><em>Abrir →</em></a>
-    </div>
-   </section>
-
-   <div class="grid">
-    <section class="panel" id="documentos">
-     <div class="ph"><h3>Documentos</h3></div>
-     <table>
-      <tr><th>Documento</th><th class="hide">Fecha</th><th class="r"></th></tr>
-      <tr><td>Plan de reordenamiento v2</td><td class="hide">22 sep 2026</td><td class="r"><a class="dl" href="#">Ver</a></td></tr>
-      <tr><td>Informe de diagnóstico</td><td class="hide">5 sep 2026</td><td class="r"><a class="dl" href="#">Ver</a></td></tr>
-      <tr><td>Acta · Sesión 6</td><td class="hide">2 oct 2026</td><td class="r"><a class="dl" href="#">Ver</a></td></tr>
-      <tr><td>Propuesta firmada</td><td class="hide">20 ago 2026</td><td class="r"><a class="dl" href="#">Ver</a></td></tr>
-      <tr><td>Acuerdo de confidencialidad (NDA)</td><td class="hide">18 ago 2026</td><td class="r"><a class="dl" href="#">Ver</a></td></tr>
-     </table>
-    </section>
-    <section class="panel" id="facturacion">
-     <div class="ph"><h3>Facturación</h3></div>
-     <table>
-      <tr><th>Factura</th><th class="r">Monto</th><th class="r">Estado</th></tr>
-      <tr><td>F001-0034<br><span class="s" style="font-size:12px;color:var(--mute)">Octubre</span></td><td class="r">US$1,200</td><td class="r"><span class="pill p-wait">Por pagar · 15 oct</span></td></tr>
-      <tr><td>F001-0029<br><span class="s" style="font-size:12px;color:var(--mute)">Septiembre</span></td><td class="r">US$1,200</td><td class="r"><span class="pill p-ok">Pagada</span></td></tr>
-      <tr><td>F001-0021<br><span class="s" style="font-size:12px;color:var(--mute)">Agosto</span></td><td class="r">US$1,800</td><td class="r"><span class="pill p-ok">Pagada</span></td></tr>
-     </table>
-    </section>
-   </div>
-  </main>
+  <div class="mob"><span>Darwin Optima</span><a href="/clientes" style="color:var(--mute-d);font-size:13px;font-weight:400">Salir</a></div>
+  <main id="main"></main>
  </div>
 </div>
-
 <script>
-function show(){document.getElementById('login').style.display='none';document.getElementById('app').style.display='grid';window.scrollTo(0,0)}
-function out(){document.getElementById('app').style.display='none';document.getElementById('login').style.display='grid'}
-document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();var v=document.getElementById('em').value.trim();var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);document.getElementById('er').style.display=ok?'none':'block';if(ok){document.getElementById('sent').style.display='block'}});
-document.getElementById('em').addEventListener('input',function(){document.getElementById('er').style.display='none'});
-document.querySelectorAll('.side a').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('.side a').forEach(function(x){x.classList.remove('on')});a.classList.add('on')})});
+var ICONS={"CapitalOptima": "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#2C5F8A;margin-bottom:12px\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"5\" y=\"15\" width=\"2.6\" height=\"6\" rx=\"1\" fill=\"#ffffff\" opacity=\"0.55\"></rect><rect x=\"10.7\" y=\"11\" width=\"2.6\" height=\"10\" rx=\"1\" fill=\"#ffffff\" opacity=\"0.55\"></rect><rect x=\"16.4\" y=\"6\" width=\"2.6\" height=\"15\" rx=\"1\" fill=\"#ffffff\" opacity=\"0.55\"></rect><path d=\"M 3 16 L 10.5 9 L 14 11.5 L 21 4\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M 15.5 4 L 21 4 L 21 9.5\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>", "Tarifa Justa": "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#12151C;margin-bottom:12px\"><svg width=\"21\" height=\"22\" viewBox=\"0 0 100 110\" aria-hidden=\"true\"><line x1=\"14\" y1=\"10\" x2=\"14\" y2=\"80\" stroke=\"#F5F1E4\" stroke-width=\"9\" stroke-linecap=\"round\"></line><line x1=\"34\" y1=\"10\" x2=\"34\" y2=\"80\" stroke=\"#F5F1E4\" stroke-width=\"9\" stroke-linecap=\"round\"></line><line x1=\"54\" y1=\"10\" x2=\"54\" y2=\"80\" stroke=\"#F5F1E4\" stroke-width=\"9\" stroke-linecap=\"round\"></line><line x1=\"74\" y1=\"10\" x2=\"74\" y2=\"80\" stroke=\"#E0A526\" stroke-width=\"9\" stroke-linecap=\"round\"></line><line x1=\"4\" y1=\"80\" x2=\"88\" y2=\"8\" stroke=\"#5CC698\" stroke-width=\"11\" stroke-linecap=\"round\"></line></svg></span>", "Quadrant": "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#33386B;margin-bottom:12px\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"2\" y=\"2\" width=\"9\" height=\"9\" rx=\"2.4\" fill=\"#C14A33\"></rect><rect x=\"13\" y=\"2\" width=\"9\" height=\"9\" rx=\"2.4\" fill=\"rgba(246,244,239,0.32)\"></rect><rect x=\"2\" y=\"13\" width=\"9\" height=\"9\" rx=\"2.4\" fill=\"rgba(246,244,239,0.32)\"></rect><rect x=\"13\" y=\"13\" width=\"9\" height=\"9\" rx=\"2.4\" fill=\"rgba(246,244,239,0.32)\"></rect></svg></span>", "ACS": "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#2E9E5B;margin-bottom:12px\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"4\" y=\"5\" width=\"16\" height=\"15\" rx=\"2\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.7\"></rect><line x1=\"4\" y1=\"9.5\" x2=\"20\" y2=\"9.5\" stroke=\"#ffffff\" stroke-width=\"1.5\"></line><line x1=\"8\" y1=\"2.7\" x2=\"8\" y2=\"6\" stroke=\"#ffffff\" stroke-width=\"1.7\" stroke-linecap=\"round\"></line><line x1=\"16\" y1=\"2.7\" x2=\"16\" y2=\"6\" stroke=\"#ffffff\" stroke-width=\"1.7\" stroke-linecap=\"round\"></line><path d=\"M 8 14.3 L 11 17.2 L 17 11\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></span>", "PCM": "<span style=\"display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#B8860B;margin-bottom:12px\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" stroke=\"#353E44\" stroke-width=\"2.4\"></circle><text x=\"12\" y=\"16.3\" font-size=\"11\" font-weight=\"800\" fill=\"#353E44\" text-anchor=\"middle\" font-family=\"Arial, sans-serif\">$</text></svg></span>"};
+var DESC={"CapitalOptima": "Tus estados financieros en vivo", "Tarifa Justa": "Horas por proyecto y facturación", "Quadrant": "Pendientes priorizados del equipo", "ACS": "Agenda y seguimiento de clientes", "PCM": "Tus finanzas personales"};
+var GRID="<svg class=\"dotgrid\" viewBox=\"0 0 282 282\" aria-hidden=\"true\"><g class=\"gl\"><line x1=\"26\" y1=\"26\" x2=\"256\" y2=\"26\"/><line x1=\"26\" y1=\"72\" x2=\"256\" y2=\"72\"/><line x1=\"26\" y1=\"118\" x2=\"256\" y2=\"118\"/><line x1=\"26\" y1=\"164\" x2=\"256\" y2=\"164\"/><line x1=\"26\" y1=\"210\" x2=\"256\" y2=\"210\"/><line x1=\"26\" y1=\"256\" x2=\"256\" y2=\"256\"/><line x1=\"26\" y1=\"26\" x2=\"26\" y2=\"256\"/><line x1=\"72\" y1=\"26\" x2=\"72\" y2=\"256\"/><line x1=\"118\" y1=\"26\" x2=\"118\" y2=\"256\"/><line x1=\"164\" y1=\"26\" x2=\"164\" y2=\"256\"/><line x1=\"210\" y1=\"26\" x2=\"210\" y2=\"256\"/><line x1=\"256\" y1=\"26\" x2=\"256\" y2=\"256\"/></g><g class=\"dots\"><circle cx=\"26\" cy=\"26\" r=\"6.5\" style=\"--dx:105px;--dy:143px;--dl:0.02s;--b:4.16s\"/><circle cx=\"72\" cy=\"26\" r=\"4.5\" style=\"--dx:44px;--dy:148px;--dl:0.01s;--b:2.68s\"/><circle cx=\"118\" cy=\"26\" r=\"4.5\" style=\"--dx:-104px;--dy:-91px;--dl:1.09s;--b:4.7s\"/><circle cx=\"164\" cy=\"26\" r=\"4.5\" style=\"--dx:19px;--dy:48px;--dl:1.03s;--b:4.24s\"/><circle cx=\"210\" cy=\"26\" r=\"4.5\" style=\"--dx:84px;--dy:75px;--dl:0.51s;--b:3.85s\"/><circle cx=\"256\" cy=\"26\" r=\"6.5\" style=\"--dx:115px;--dy:113px;--dl:0.03s;--b:4.0s\"/><circle cx=\"26\" cy=\"72\" r=\"4.5\" style=\"--dx:96px;--dy:-139px;--dl:0.25s;--b:4.25s\"/><circle cx=\"72\" cy=\"72\" r=\"4.5\" style=\"--dx:104px;--dy:98px;--dl:0.28s;--b:2.53s\"/><circle cx=\"118\" cy=\"72\" r=\"4.5\" style=\"--dx:4px;--dy:-77px;--dl:0.75s;--b:3.01s\"/><circle cx=\"164\" cy=\"72\" r=\"4.5\" style=\"--dx:-64px;--dy:25px;--dl:0.73s;--b:3.6s\"/><circle cx=\"210\" cy=\"72\" r=\"6.5\" style=\"--dx:-27px;--dy:17px;--dl:0.45s;--b:3.13s\"/><circle cx=\"256\" cy=\"72\" r=\"4.5\" style=\"--dx:70px;--dy:-48px;--dl:0.97s;--b:3.46s\"/><circle cx=\"26\" cy=\"118\" r=\"4.5\" style=\"--dx:148px;--dy:12px;--dl:0.23s;--b:2.84s\"/><circle cx=\"72\" cy=\"118\" r=\"4.5\" style=\"--dx:29px;--dy:-130px;--dl:0.78s;--b:4.88s\"/><circle cx=\"118\" cy=\"118\" r=\"4.5\" style=\"--dx:-9px;--dy:-64px;--dl:0.12s;--b:3.68s\"/><circle cx=\"164\" cy=\"118\" r=\"6.5\" style=\"--dx:-41px;--dy:61px;--dl:0.42s;--b:3.8s\"/><circle cx=\"210\" cy=\"118\" r=\"4.5\" style=\"--dx:11px;--dy:81px;--dl:0.35s;--b:4.57s\"/><circle cx=\"256\" cy=\"118\" r=\"4.5\" style=\"--dx:-8px;--dy:-129px;--dl:0.75s;--b:3.2s\"/><circle cx=\"26\" cy=\"164\" r=\"4.5\" style=\"--dx:31px;--dy:8px;--dl:0.71s;--b:3.91s\"/><circle cx=\"72\" cy=\"164\" r=\"4.5\" style=\"--dx:-81px;--dy:57px;--dl:0.5s;--b:2.56s\"/><circle cx=\"118\" cy=\"164\" r=\"6.5\" style=\"--dx:-14px;--dy:-29px;--dl:0.86s;--b:4.49s\"/><circle cx=\"164\" cy=\"164\" r=\"4.5\" style=\"--dx:-91px;--dy:78px;--dl:0.12s;--b:3.84s\"/><circle cx=\"210\" cy=\"164\" r=\"4.5\" style=\"--dx:38px;--dy:-111px;--dl:0.75s;--b:3.0s\"/><circle cx=\"256\" cy=\"164\" r=\"4.5\" style=\"--dx:93px;--dy:-19px;--dl:0.2s;--b:2.53s\"/><circle cx=\"26\" cy=\"210\" r=\"4.5\" style=\"--dx:91px;--dy:123px;--dl:0.79s;--b:2.95s\"/><circle cx=\"72\" cy=\"210\" r=\"6.5\" style=\"--dx:-11px;--dy:27px;--dl:0.59s;--b:4.87s\"/><circle cx=\"118\" cy=\"210\" r=\"4.5\" style=\"--dx:106px;--dy:-69px;--dl:0.43s;--b:4.48s\"/><circle cx=\"164\" cy=\"210\" r=\"4.5\" style=\"--dx:-36px;--dy:-106px;--dl:0.45s;--b:4.73s\"/><circle cx=\"210\" cy=\"210\" r=\"4.5\" style=\"--dx:48px;--dy:-84px;--dl:0.5s;--b:2.99s\"/><circle cx=\"256\" cy=\"210\" r=\"4.5\" style=\"--dx:-147px;--dy:42px;--dl:0.61s;--b:4.13s\"/><circle cx=\"26\" cy=\"256\" r=\"6.5\" style=\"--dx:107px;--dy:25px;--dl:0.51s;--b:4.13s\"/><circle cx=\"72\" cy=\"256\" r=\"4.5\" style=\"--dx:-46px;--dy:-100px;--dl:0.79s;--b:4.55s\"/><circle cx=\"118\" cy=\"256\" r=\"4.5\" style=\"--dx:-87px;--dy:-41px;--dl:0.27s;--b:3.48s\"/><circle cx=\"164\" cy=\"256\" r=\"4.5\" style=\"--dx:-106px;--dy:8px;--dl:0.59s;--b:4.48s\"/><circle cx=\"210\" cy=\"256\" r=\"4.5\" style=\"--dx:14px;--dy:-16px;--dl:1.0s;--b:4.64s\"/><circle cx=\"256\" cy=\"256\" r=\"6.5\" style=\"--dx:28px;--dy:108px;--dl:0.09s;--b:3.6s\"/></g></svg>";
+var TC={"CapitalOptima":"#2C5F8A","Tarifa Justa":"#E0A526","Quadrant":"#C14A33","ACS":"#2E9E5B","PCM":"#B8860B"};
+var STAGES=['Diagnóstico','Plan','Ejecución supervisada','Traspaso'];
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function safeUrl(u){return /^https?:\/\//i.test(u||'')?u:''}
+function pd(s){if(!s)return null;if(/^\d{4}-\d{2}-\d{2}$/.test(s)){var a=s.split('-');return new Date(+a[0],a[1]-1,+a[2])}return new Date(s)}
+function fd(s,o){var d=pd(s);return d?d.toLocaleDateString('es',o||{day:'numeric',month:'short',year:'numeric'}).replace('.',''):''}
+function money(n){return n==null?'':'US$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:2})}
+function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):s}
+function render(d){
+ var c=d.cliente,p=d.proyecto,h='';
+ document.getElementById('me-n').textContent=c.nombre;document.getElementById('me-e').textContent=[c.empresa,c.rubro].filter(Boolean).join(' · ');
+ var first=(c.nombre||'').split(' ')[0];
+ var IDX=p.etapa==='Cerrado'?4:Math.max(0,STAGES.indexOf(p.etapa));
+ var overall=p.etapa==='Cerrado'?100:Math.round(((IDX+(Math.max(0,Math.min(100,p.avance||0))/100))/4)*100);
+ var C2=2*Math.PI*66;
+ h+='<section class="band" id="resumen">'+GRID+'<div style="position:relative;z-index:1"><p class="eyebrow">'+esc(c.empresa||'Tu proyecto')+' · Proyecto de reordenamiento</p><h1>Hola, '+esc(first)+'.</h1><p class="meta">Consultor: Augusto Balarezo · Actualizado '+esc(fd(d.actualizado))+'</p></div><div class="ring"><svg viewBox="0 0 150 150"><circle class="trk" cx="75" cy="75" r="66"/><circle class="val" id="ringv" cx="75" cy="75" r="66" stroke-dasharray="'+C2.toFixed(1)+'" stroke-dashoffset="'+C2.toFixed(1)+'" data-to="'+(C2*(1-overall/100)).toFixed(1)+'"/></svg><div class="lbl"><b data-count="'+overall+'">0%</b><span>del proyecto</span></div></div></section>';
+ // avance
+ var idx=p.etapa==='Cerrado'?4:STAGES.indexOf(p.etapa);
+ var subs=[p.diagnostico?'Completado '+fd(p.diagnostico,{day:'numeric',month:'short'}):'Completado',p.plan?'Aprobado '+fd(p.plan,{day:'numeric',month:'short'}):'Aprobado','',p.traspaso?'Previsto '+fd(p.traspaso,{month:'short',year:'numeric'}):'Pendiente'];
+ var st='';
+ STAGES.forEach(function(n,i){var cls='',sub='',bar='';
+  if(i<idx){cls='done';sub=i===3?'Completado':subs[i]}
+  else if(i===idx){cls='now';var a=Math.max(0,Math.min(100,p.avance||0));bar=a;sub=(p.avance!=null?a+'% completado':'En curso')}
+  else{sub=i===3?subs[3]:'Pendiente'}
+  var w=cls==='done'?100:(cls==='now'?bar:0);st+='<div class="stg '+cls+'"><div class="bar"><i data-w="'+w+'"></i></div><span class="n">0'+(i+1)+'</span><b>'+n+'</b><span>'+esc(sub)+'</span></div>'});
+ var pill=p.etapa==='Cerrado'?'Proyecto cerrado':(p.semana&&p.semanas?'En curso · semana '+p.semana+' de '+p.semanas:(p.etapa?'En curso':''));
+ var kv=d.indicadores.length?'<div class="kv">'+d.indicadores.map(function(x){return '<div><b>'+esc(x.valor)+'</b><span>'+esc(x.etiqueta)+'</span></div>'}).join('')+'</div>':'';
+ h+='<div class="grid"><section class="panel" id="avance"><div class="ph"><h3>Avance del proyecto</h3>'+(pill?'<span class="pill p-ok">'+esc(pill)+'</span>':'')+'</div><div class="stages">'+st+'</div>'+kv+'</section>';
+ // sesion
+ var s=d.sesion,ses='';
+ if(s.fecha){var sd=pd(s.fecha);var hasT=s.fecha.length>10;
+  ses='<p class="eyebrow" style="color:var(--mint)">Próxima sesión</p><p class="when">'+esc(cap(sd.toLocaleDateString('es',{weekday:'long',day:'numeric',month:'long'})))+'</p><p class="s">'+(hasT?esc(sd.toLocaleTimeString('es',{hour:'numeric',minute:'2-digit',timeZone:'America/Lima'}))+' (hora de Lima)'+(s.tema?' · ':''):'')+esc(s.tema)+'</p>';var days=Math.round((new Date(sd.getFullYear(),sd.getMonth(),sd.getDate())-new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()))/864e5);if(days>=0)ses+='<span class="chip">'+(days===0?'Es hoy':days===1?'Mañana':'Faltan '+days+' días')+'</span>'}
+ else ses='<p class="eyebrow" style="color:var(--mint)">Próxima sesión</p><p class="s" style="margin-top:8px">Por coordinar.</p>';
+ if(d.mensaje) ses+='<div style="border-top:1px solid var(--line-d);margin-top:26px;padding-top:20px"><p class="eyebrow" style="color:var(--mint);margin-bottom:8px">Mensaje de Augusto</p><p class="s" style="color:#DDE3E5">'+esc(d.mensaje)+'</p></div>';
+ h+='<section class="panel next">'+ses+'</section></div>';
+ // pendientes
+ var open=d.pendientes.filter(function(x){return !x.hecho}),done=d.pendientes.filter(function(x){return x.hecho}).sort(function(a,b){return (b.completado||'').localeCompare(a.completado||'')}).slice(0,3);
+ var rows=open.concat(done).map(function(x){
+  var meta=[x.responsable?'Responsable: '+x.responsable:'',x.hecho?(x.completado?'Completado '+fd(x.completado,{day:'numeric',month:'short'}):'Completado'):(x.vence?'vence '+fd(x.vence,{day:'numeric',month:'short'}):'')].filter(Boolean).join(' · ');
+  var pc=x.etiqueta==='Urgente'?'p-wait" style="background:#FBEAEA;color:#A33':(x.etiqueta==='Hábito'?'p-new':'p-wait');
+  return '<div class="row task"><span class="chk'+(x.hecho?' ok':'')+'"></span><div style="flex:1"><p class="t'+(x.hecho?' done':'')+'">'+esc(x.titulo)+'</p><p class="s">'+esc(meta)+'</p></div>'+(!x.hecho&&x.etiqueta?'<span class="pill '+pc+'">'+esc(x.etiqueta)+'</span>':'')+'</div>'}).join('');
+ h+='<section class="panel"><div class="ph"><h3>Pendientes de tu equipo</h3><span style="font-size:13px;color:var(--mute)">'+open.length+' abiertos</span></div>'+(rows||'<p class="empty">No hay pendientes por ahora.</p>')+'</section>';
+ // herramientas
+ if(d.herramientas.length){
+  h+='<section class="panel" id="herramientas"><div class="ph"><h3>Tus herramientas</h3></div><div class="tools">'+d.herramientas.map(function(t){var u=safeUrl(t.enlace);return '<a class="tool" style="--tc:'+(TC[t.nombre]||'#9CD1CC')+'" href="'+esc(u||'#')+'" target="_blank" rel="noopener">'+(ICONS[t.nombre]||'')+'<b>'+esc(t.nombre)+'</b><span>'+esc(DESC[t.nombre]||'')+'</span><em>Abrir →</em></a>'}).join('')+'</div></section>'}
+ // docs + facturas
+ var dr=d.documentos.map(function(x){var u=safeUrl(x.enlace);return '<tr><td>'+esc(x.nombre)+'</td><td class="hide">'+esc(fd(x.fecha))+'</td><td class="r">'+(u?'<a class="dl" href="'+esc(u)+'" target="_blank" rel="noopener">Ver</a>':'')+'</td></tr>'}).join('');
+ var fr=d.facturas.map(function(x){var u=safeUrl(x.enlace);var cls=x.estado==='Pagada'?'p-ok':(x.estado==='Vencida'?'p-wait" style="background:#FBEAEA;color:#A33':'p-wait');var lab=x.estado+(x.estado!=='Pagada'&&x.vence?' · '+fd(x.vence,{day:'numeric',month:'short'}):'');
+  return '<tr><td>'+(u?'<a class="dl" style="font-size:14px" href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(x.numero)+'</a>':esc(x.numero))+'<br><span style="font-size:12px;color:var(--mute)">'+esc(x.periodo)+'</span></td><td class="r">'+esc(money(x.monto))+'</td><td class="r">'+(x.estado?'<span class="pill '+cls+'">'+esc(lab)+'</span>':'')+'</td></tr>'}).join('');
+ h+='<div class="grid"><section class="panel" id="documentos"><div class="ph"><h3>Documentos</h3></div>'+(dr?'<table><tr><th>Documento</th><th class="hide">Fecha</th><th class="r"></th></tr>'+dr+'</table>':'<p class="empty">Aún no hay documentos.</p>')+'</section>';
+ h+='<section class="panel" id="facturacion"><div class="ph"><h3>Facturación</h3></div>'+(fr?'<table><tr><th>Factura</th><th class="r">Monto</th><th class="r">Estado</th></tr>'+fr+'</table>':'<p class="empty">Aún no hay facturas.</p>')+'</section></div>';
+ h+='<p style="font-size:12px;color:var(--mute);margin-top:30px">¿Algo no cuadra? Escríbeme a <a href="mailto:augusto@darwinoptima.com" style="color:var(--teal)">augusto@darwinoptima.com</a>.</p>';
+ document.getElementById('main').innerHTML=h;
+ document.getElementById('ld').style.display='none';document.getElementById('app').classList.add('ready');
+ // marcar puntos encendidos segun avance
+ var dots=document.querySelectorAll('.band .dotgrid circle'),on=Math.round(dots.length*overall/100);
+ for(var k=0;k<dots.length;k++){dots[k].classList.add(k<on?'on':'off')}
+ document.querySelectorAll('#main .panel').forEach(function(el,i){el.style.setProperty('--d',(0.12+i*0.08)+'s')});
+ requestAnimationFrame(function(){requestAnimationFrame(function(){
+  var rv=document.getElementById('ringv');if(rv)rv.style.strokeDashoffset=rv.getAttribute('data-to');
+  document.querySelectorAll('.stg .bar i').forEach(function(b,i){setTimeout(function(){b.style.width=b.getAttribute('data-w')+'%'},500+i*250)});
+ })});
+ countUp(document.querySelector('.ring b'),overall,'%',1800);
+ document.querySelectorAll('.kv b').forEach(function(b){var m=b.textContent.match(/^([−-]?)(\d+(?:[.,]\d+)?)(.*)$/);if(m){var n=parseFloat(m[2].replace(',','.'));countUp(b,n,m[3],1400,m[1])}});
+}
+function countUp(el,to,suf,ms,pre){if(!el)return;pre=pre||'';var dec=(String(to).split('.')[1]||'').length,t0=null;function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);el.textContent=pre+(to*e).toFixed(dec)+suf;if(k<1)requestAnimationFrame(f)}if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=pre+to+suf;return}requestAnimationFrame(f)}
+document.querySelectorAll('.side a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('.side a').forEach(function(x){x.classList.remove('on')});a.classList.add('on')})});
+render({"cliente":{"nombre":"Lucía Ramos","empresa":"Estudio Ramos","rubro":"Arquitectura"},"proyecto":{"etapa":"Ejecución supervisada","avance":55,"semana":7,"semanas":16,"diagnostico":"2026-09-05","plan":"2026-09-22","traspaso":"2026-12-15"},"sesion":{"fecha":"2026-10-09T10:00:00.000-05:00","tema":"Revisión de flujo de caja y precios"},"mensaje":"Buen avance con el control de proyectos. Esta semana el foco es cerrar la lista de precios por tipo de obra.","indicadores":[{"valor":"18 / 31","etiqueta":"acciones del plan cumplidas"},{"valor":"3","etiqueta":"áreas en intervención"},{"valor":"−14%","etiqueta":"costos fijos vs. inicio"}],"herramientas":[{"nombre":"CapitalOptima","enlace":"https://capo.darwinoptima.com"},{"nombre":"Tarifa Justa","enlace":"https://tarifajusta.darwinoptima.com"},{"nombre":"Quadrant","enlace":"https://quadrant.darwinoptima.com"}],"pendientes":[{"titulo":"Cargar facturas de proveedores de septiembre","responsable":"Marco","vence":"2026-10-08","hecho":false,"etiqueta":"Esta semana"},{"titulo":"Definir precio por m² para remodelaciones","responsable":"Lucía","vence":"2026-10-09","hecho":false,"etiqueta":"Esta semana"},{"titulo":"Registrar horas por proyecto en Tarifa Justa","responsable":"Todo el equipo","hecho":false,"etiqueta":"Hábito"},{"titulo":"Separar cuentas personales y del estudio","responsable":"Lucía","hecho":true,"completado":"2026-09-30"}],"documentos":[{"nombre":"Plan de reordenamiento v2","fecha":"2026-09-22","enlace":""},{"nombre":"Informe de diagnóstico","fecha":"2026-09-05","enlace":""},{"nombre":"Acuerdo de confidencialidad (NDA)","fecha":"2026-08-18","enlace":""}],"facturas":[{"numero":"F001-0034","periodo":"Octubre 2026","monto":1200,"estado":"Por pagar","vence":"2026-10-15","enlace":""},{"numero":"F001-0029","periodo":"Septiembre 2026","monto":1200,"estado":"Pagada"}],"actualizado":"2026-10-06T15:00:00Z"});
 </script>
 </body>
 </html>
