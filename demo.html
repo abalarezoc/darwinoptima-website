@@ -171,6 +171,9 @@ body.idle .hint{opacity:0}
 .sess .cal b{display:block;font-family:var(--serif);font-weight:400;font-size:46px;padding:8px 0}
 .sess p{font-size:23px;line-height:1.45}
 .sess p small{display:block;color:var(--mute);font-size:19px}
+.msg p{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.4;margin-top:10px}
+.msg p b{font-style:normal;color:var(--mint);font-weight:400}
+.s4 .card{padding-top:24px;padding-bottom:24px}
 .docs li,.todo li{list-style:none;display:flex;align-items:center;gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:20px}
 .docs li .fi{width:34px;height:42px;background:var(--paper);clip-path:polygon(0 0,70% 0,100% 24%,100% 100%,0 100%);flex:none;position:relative}
 .docs li .fi:after{content:"PDF";position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:9px;font-weight:700;color:var(--qd)}
@@ -311,12 +314,13 @@ body.idle .hint{opacity:0}
     <div class="tools">
      <div class="tool rise" style="--c:var(--capo);--d:.65"><div class="ic">CO</div><div><b>CapitalOptima</b><span>Caja y deudas</span></div></div>
      <div class="tool rise" style="--c:var(--tj);--d:.75"><div class="ic">TJ</div><div><b>Tarifa Justa</b><span>Precios y márgenes</span></div></div>
-     <div class="tool rise" style="--c:var(--pcm);--d:.85"><div class="ic">PC</div><div><b>PCM</b><span>Planificación y control</span></div></div>
+     <div class="tool rise" style="--c:var(--pcm);--d:.85"><div class="ic">PC</div><div><b>PCM</b><span>Planificación</span></div></div>
     </div>
     <div class="card rise" style="--d:.95;margin-top:20px">
      <div class="k">Próxima sesión</div>
      <div class="sess"><div class="cal"><span>OCT</span><b>26</b></div><p>Lunes · 9:00 a. m.<small>Revisión de márgenes por tipo de servicio</small></p></div>
     </div>
+    <div class="card msg rise" style="--d:1.05;margin-top:20px"><div class="k">Mensaje de tu consultor</div><p>Martín: si esta semana firmamos los 2 contratos anuales, pasamos el <b>45 %</b> de ingresos por contrato. Vamos bien.</p></div>
    </div>
    <div>
     <div class="card docs rise" style="--d:.5">
