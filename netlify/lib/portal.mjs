@@ -192,14 +192,14 @@ export function json(data, status = 200, extra = {}) {
 export async function sendLoginEmail(to, nombre, link) {
   const from = env('MAIL_FROM') || 'Darwin Optima <portal@darwinoptima.com>';
   const saludo = nombre ? 'Hola, ' + nombre.split(' ')[0] + ':' : 'Hola:';
-  const html = `<!doctype html><html><body style="margin:0;background:#F4F4F1;font-family:Inter,Segoe UI,Arial,sans-serif;color:#1F2529">
+  const html = `<!doctype html><html><body style="margin:0;background:#F4F4F1;font-family:Inter,Segoe UI,Arial,sans-serif;color:#142030">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#F4F4F1;padding:40px 16px"><tr><td align="center">
 <table width="520" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border:1px solid #E3E7E8">
-<tr><td style="background:#1F2529;padding:24px 32px;color:#F4F4F1;font-weight:600;font-size:16px">Darwin Optima</td></tr>
+<tr><td style="background:#142030;padding:24px 32px;color:#F4F4F1;font-weight:600;font-size:16px">Darwin Optima</td></tr>
 <tr><td style="padding:36px 32px 12px;font-size:15px;line-height:1.6">
 <p style="margin:0 0 16px">${saludo}</p>
 <p style="margin:0 0 28px">Este es tu enlace para entrar a tu portal de cliente. Es personal y vence en ${LOGIN_MINUTES} minutos.</p>
-<p style="margin:0 0 28px"><a href="${link}" style="display:inline-block;background:#9CD1CC;color:#1F2529;text-decoration:none;font-weight:600;padding:14px 26px">Entrar a mi portal →</a></p>
+<p style="margin:0 0 28px"><a href="${link}" style="display:inline-block;background:#9CD1CC;color:#142030;text-decoration:none;font-weight:600;padding:14px 26px">Entrar a mi portal →</a></p>
 <p style="margin:0 0 8px;font-size:13px;color:#5B6670">Si no pediste este acceso, ignora este correo. Nadie puede entrar sin abrir este enlace.</p>
 </td></tr>
 <tr><td style="padding:20px 32px 28px;font-size:12px;color:#8A939A;border-top:1px solid #EDEFF1">Darwin Optima · Orden. Precisión. Ventaja.</td></tr>
