@@ -62,8 +62,8 @@ body.idle .hint{opacity:0}
 .scene.on .grid7 circle{transform:translate(0,0);opacity:1}
 .grid7 circle.c{fill:var(--c)}
 .grid7 circle.w{fill:var(--paper)}
-.scene.on .grid7 circle.pulse{animation:pulse 3.2s ease-in-out 2.8s infinite}
-@keyframes pulse{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,0) scale(1.7)}}
+.scene.on .grid7 circle.pulse{animation:chase 7.8s ease-in-out infinite}
+@keyframes chase{0%,17%,100%{transform:translate(0,0) scale(1)}7%{transform:translate(0,0) scale(1.9)}}
 
 /* ---------- 1 diagnóstico ---------- */
 .s1 .cols{display:grid;grid-template-columns:1.25fr 1fr;gap:90px;margin-top:64px}
@@ -382,13 +382,13 @@ body.idle .hint{opacity:0}
 
   // cuadrícula de la portada
   (function(){
-    var g=document.getElementById('grid7'),n=7,gap=90,o=50,h='',cols={'3-5':'#2C5F8A','1-2':'#E0A526','5-1':'#C14A33','4-4':'#2E9E5B','6-3':'#B8860B','2-6':'#5CC698'};
+    var g=document.getElementById('grid7'),n=7,gap=90,o=50,h='',cols={'3-5':'#2C5F8A','1-2':'#E0A526','5-1':'#C14A33','4-4':'#2E9E5B','6-3':'#B8860B','2-6':'#5CC698'};var order=['1-2','2-6','3-5','4-4','6-3','5-1'];
     for(var i=0;i<n;i++){h+='<line x1="'+o+'" y1="'+(o+i*gap)+'" x2="'+(o+6*gap)+'" y2="'+(o+i*gap)+'"/><line x1="'+(o+i*gap)+'" y1="'+o+'" x2="'+(o+i*gap)+'" y2="'+(o+6*gap)+'"/>';}
     var seed=7;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
     for(var r=0;r<n;r++)for(var c=0;c<n;c++){
       var k=r+'-'+c,big=(r+c)%4===0,cl=cols[k],w=!cl&&(r*7+c)%9===0;
       var dx=Math.round((rnd()-.5)*420),dy=Math.round((rnd()-.5)*420);
-      h+='<circle cx="'+(o+c*gap)+'" cy="'+(o+r*gap)+'" r="'+(cl?13:big?11:8)+'" class="'+(cl?'c pulse':w?'w':'')+'" style="--dx:'+dx+'px;--dy:'+dy+'px;'+(cl?'--c:'+cl+';animation-delay:'+(2.8+((r*3+c)%5)*.5)+'s':'')+'"/>';
+      h+='<circle cx="'+(o+c*gap)+'" cy="'+(o+r*gap)+'" r="'+(cl?13:big?11:8)+'" class="'+(cl?'c pulse':w?'w':'')+'" style="--dx:'+dx+'px;--dy:'+dy+'px;'+(cl?'--c:'+cl+';animation-delay:'+(2.8+order.indexOf(k)*1.3)+'s':'')+'"/>';
     }
     g.innerHTML=h;
   })();
