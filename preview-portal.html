@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1F2529;--ink-2:#171C1F;--paper:#F4F4F1;--white:#fff;--line:rgba(31,37,41,.10);--line-d:rgba(244,244,241,.12);--mute:#5B6670;--mute-d:#A9B3B8;--mint:#9CD1CC;--teal:#3F7D76;--amber:#B7791F;--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+:root{--ink:#142030;--ink-2:#0E1824;--paper:#F4F4F1;--white:#fff;--line:rgba(20,32,48,.10);--line-d:rgba(244,244,241,.12);--mute:#5B6670;--mute-d:#A9B3B8;--mint:#9CD1CC;--teal:#3F7D76;--amber:#B7791F;--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 *{box-sizing:border-box}body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}p{margin:0}
 .eyebrow{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
@@ -111,16 +111,16 @@ td a.dl{color:var(--teal);font-size:13px;border-bottom:1px solid currentColor}
 .dotgrid .gl line{stroke:rgba(156,209,204,.13);stroke-width:1}
 .dotgrid circle{fill:#9CD1CC;transform:translate(var(--dx),var(--dy));opacity:.25;transform-box:fill-box;transform-origin:center;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) var(--dl) forwards,breathe var(--b) ease-in-out calc(var(--dl) + 2.4s) infinite}
 .dotgrid circle.on{fill:#F4F4F1}
-.dotgrid circle.off{fill:#4B5960}
+.dotgrid circle.off{fill:#3E5068}
 .band .dotgrid circle.tc{fill:var(--c)}
 @keyframes settle{to{transform:translate(0,0);opacity:1}}
 @keyframes breathe{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,0) scale(1.35)}}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.dotgrid circle{animation:none;transform:none;opacity:1}.panel,.band{animation:none!important}}
 
-body{background-color:var(--paper);background-image:radial-gradient(rgba(31,37,41,.06) 1px,transparent 1px);background-size:22px 22px}
+body{background-color:var(--paper);background-image:radial-gradient(rgba(20,32,48,.06) 1px,transparent 1px);background-size:22px 22px}
 .panel{animation:up .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s);transition:box-shadow .25s,transform .25s}
-.panel:hover{box-shadow:0 10px 30px -18px rgba(31,37,41,.35)}
+.panel:hover{box-shadow:0 10px 30px -18px rgba(20,32,48,.35)}
 .band{position:relative;overflow:hidden;background:var(--ink);color:#F4F4F1;padding:40px 44px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:32px;animation:up .6s cubic-bezier(.2,.7,.2,1) both}
 .band h1{font-size:44px;line-height:1.05;margin-top:10px;color:#fff}
 .band .eyebrow{color:var(--mint)}
@@ -143,7 +143,7 @@ body{background-color:var(--paper);background-image:radial-gradient(rgba(31,37,4
 .chip{display:inline-block;margin-top:14px;font-size:12px;font-weight:500;background:rgba(156,209,204,.16);color:var(--mint);padding:5px 12px;border-radius:20px}
 .tool{position:relative;transition:transform .25s,box-shadow .25s,border-color .25s}
 .tool::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--tc,#9CD1CC);transform:scaleX(0);transform-origin:left;transition:transform .35s}
-.tool:hover{transform:translateY(-3px);box-shadow:0 14px 30px -20px rgba(31,37,41,.45)}
+.tool:hover{transform:translateY(-3px);box-shadow:0 14px 30px -20px rgba(20,32,48,.45)}
 .tool:hover::before{transform:scaleX(1)}
 .tool em{transition:letter-spacing .25s}.tool:hover em{letter-spacing:.04em}
 .row.task{transition:background .2s}.row.task:hover{background:rgba(156,209,204,.08)}
