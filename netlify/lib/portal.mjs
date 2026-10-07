@@ -36,7 +36,7 @@ async function notion(path, body) {
   const r = await fetch('https://api.notion.com/v1' + path, {
     method: body ? 'POST' : 'GET',
     headers: {
-      Authorization: 'Bearer ' + env('NOTION_TOKEN'),
+      Authorization: 'Bearer ' + String(env('NOTION_TOKEN') || '').trim(),
       'Notion-Version': '2022-06-28',
       'Content-Type': 'application/json',
     },
@@ -145,7 +145,7 @@ export async function getClientData(clientId, mail) {
 
 /* ---------- Tokens firmados ---------- */
 function hmac(data) {
-  const secret = env('PORTAL_SECRET');
+  const secret = String(env('PORTAL_SECRET') || '').trim();
   if (!secret || secret.length < 32) throw new Error('PORTAL_SECRET falta o es muy corto');
   return crypto.createHmac('sha256', secret).update(data).digest('base64url');
 }
@@ -207,7 +207,7 @@ export async function sendLoginEmail(to, nombre, link) {
   const text = `${saludo}\n\nEste es tu enlace para entrar a tu portal de cliente (vence en ${LOGIN_MINUTES} minutos):\n${link}\n\nSi no pediste este acceso, ignora este correo.\n\nDarwin Optima`;
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { Authorization: 'Bearer ' + env('RESEND_API_KEY'), 'Content-Type': 'application/json' },
+    headers: { Authorization: 'Bearer ' + String(env('RESEND_API_KEY') || '').trim(), 'Content-Type': 'application/json' },
     body: JSON.stringify({ from, to: [to], subject: 'Tu acceso al portal de Darwin Optima', html, text }),
   });
   if (!r.ok) throw new Error('Resend ' + r.status + ': ' + (await r.text()).slice(0, 300));
