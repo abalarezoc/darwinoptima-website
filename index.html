@@ -209,7 +209,7 @@ footer a:hover{color:#fff}
 .hero-art circle{transform:translate(var(--dx),var(--dy));opacity:.35;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes settle{to{transform:translate(0,0);opacity:1}}
 .hero-art circle{transform-box:fill-box;transform-origin:center}
-@keyframes hchase{0%,17%,100%{transform:translate(0,0) scale(1)}8%{transform:translate(0,0) scale(1.9);fill:var(--c)}}
+@keyframes hchase{0%,17%,100%{transform:translate(0,0) scale(1);fill:var(--b)}8%{transform:translate(0,0) scale(1.9);fill:var(--c)}}
 @media(prefers-reduced-motion:reduce){.hero-art circle{animation:none;transform:none;opacity:1}}
 @media(min-width:1181px){.hero h1{max-width:700px}.hero .lead{max-width:560px}}
 @media(max-width:1180px){.hero-art{display:none}}
@@ -459,6 +459,6 @@ footer a:hover{color:#fff}
  </div>
 </footer>
 
-<script>/* cuadrícula del inicio: un punto a la vez crece y toma el color de una solución */(function(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var s=document.querySelector(".hero-art");if(!s)return;var c=s.querySelectorAll("circle");var path=[2,10,17,27,31,18],cols=["#2C5F8A","#E0A526","#C14A33","#2E9E5B","#B8860B","#5CC698"];path.forEach(function(ix,k){var el=c[ix];if(!el)return;var d=parseFloat(el.style.animationDelay)||0;el.style.setProperty("--c",cols[k]);el.style.animation="settle 2.4s cubic-bezier(.2,.7,.2,1) "+d+"s forwards, hchase 8.4s ease-in-out "+(3+k*1.4)+"s infinite";});})();</script>
+<script>/* cuadrícula del inicio: un punto a la vez crece y toma el color de una solución */(function(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var s=document.querySelector(".hero-art");if(!s)return;var c=s.querySelectorAll("circle");var path=[2,10,17,27,31,18],cols=["#2C5F8A","#E0A526","#C14A33","#2E9E5B","#B8860B","#5CC698"];path.forEach(function(ix,k){var el=c[ix];if(!el)return;var d=parseFloat(el.style.animationDelay)||0;el.style.setProperty("--c",cols[k]);el.style.setProperty("--b",el.getAttribute("fill")||"#9CD1CC");el.style.animation="settle 2.4s cubic-bezier(.2,.7,.2,1) "+d+"s forwards, hchase 8.4s ease-in-out "+(3+k*1.4)+"s infinite";});})();</script>
 </body>
 </html>
