@@ -213,7 +213,7 @@ footer a:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){.hero-art circle{animation:none;transform:none;opacity:1}}
 @media(min-width:1181px){.hero h1{max-width:700px}.hero .lead{max-width:560px}}
 @media(max-width:1180px){.hero-art{display:none}}
-@media(max-width:1180px){.hero-art{display:block;position:static;width:160px;height:160px;margin:-64px 0 24px auto}}@media(max-width:700px){.hero-art{width:120px;height:120px;margin:-80px 0 16px auto}}
+@media(max-width:1180px){.hero-art{display:none}.nav .hero-art.in-nav{display:block;position:static;width:44px;height:44px;margin:0 14px 0 auto;opacity:1;flex:none}}
 .ico{width:30px;height:30px;fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:16px}
 .band{background:#DDEDEA;padding:96px 0}
 .band-in{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start}
@@ -463,6 +463,7 @@ footer a:hover{color:#fff}
 <script>/* cuadrícula del inicio: los puntos se acomodan y luego uno a la vez crece con el color de una solución. Animado con JS sobre atributos SVG para que funcione igual en iPhone, iPad y escritorio. */
 (function(){
   var svg=document.querySelector('.hero-art'); if(!svg) return;
+  var home=svg.parentNode,next=svg.nextSibling,navw=document.querySelector('.nav .wrap'),burger=navw&&navw.querySelector('.burger'),mq=window.matchMedia&&matchMedia('(max-width:1180px)');function place(){if(mq&&mq.matches&&navw){navw.insertBefore(svg,burger||null);svg.classList.add('in-nav')}else{home.insertBefore(svg,next);svg.classList.remove('in-nav')}}place();if(mq){mq.addEventListener?mq.addEventListener('change',place):mq.addListener(place)}
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var dots=[].slice.call(svg.querySelectorAll('circle')).map(function(el){
     var st=el.style, d={el:el,x:+el.getAttribute('cx'),y:+el.getAttribute('cy'),r:+el.getAttribute('r'),f:el.getAttribute('fill')||'#9CD1CC',
@@ -478,7 +479,7 @@ footer a:hover{color:#fff}
   var SETTLE=2.4, START=reduce?0.6:3, STEP=1.4, PERIOD=8.4, t0=null;
   function frame(ts){
     if(t0===null) t0=ts;
-    var t=(ts-t0)/1000, W=svg.getBoundingClientRect().width, F=W<200?1.9:(W<280?1.35:1);
+    var t=(ts-t0)/1000, W=svg.getBoundingClientRect().width, F=W<80?3.2:(W<200?1.9:(W<280?1.35:1));
     dots.forEach(function(d,i){
       var k=reduce?1:Math.max(0,Math.min(1,(t-d.dl)/SETTLE)), e=out(k);
       d.el.setAttribute('cx',(d.x+d.dx*(1-e)).toFixed(2));
