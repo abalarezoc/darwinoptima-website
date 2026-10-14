@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadrant — Tus pendientes no se olvidan: se resuelven | Darwin Optima</title>
+<meta name="description" content="Quadrant es el asistente de pendientes de Darwin Optima: recibe tus tareas por Telegram, WhatsApp, correo o audio, las prioriza solas, arma el plan, redacta los mensajes y hace el seguimiento. Tú solo apruebas.">
+<meta property="og:title" content="Quadrant — Tus pendientes no se olvidan: se resuelven">
+<meta property="og:description" content="Le cuentas qué hay que hacer. Quadrant lo ordena, arma el plan, redacta los mensajes y hace el seguimiento. Tú solo apruebas.">
+<meta property="og:image" content="https://darwinoptima.com/og-image.png?v=5">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,400&family=Inter:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="bc75c5bc-3029-422b-8dd5-ed09fa501e9f"></script>
+<style>
+:root{--ink:#142030;--ink-2:#0E1824;--paper:#F4F4F1;--mint:#9CD1CC;--teal:#3F7D76;--mute:#5B6670;--mute-d:#A9B3B8;--line:rgba(20,32,48,.12);--line-d:rgba(244,244,241,.12);
+--serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+--q-paper:#f6f4ef;--q-line:#e3ded4;--q-soft:#f0ede6;--q-ink:#1e1c1a;--q-ink3:#6f6960;--q-ink4:#9a9287;--q-indigo:#33386b;--q-tint:#e9eaf2;
+--do:#b4442f;--do-t:#faebe6;--sc:#2e6b54;--sc-t:#e7f1ec;--de:#8a5a1f;--de-t:#f7eee0;--dl:#736b60;--dl-t:#efebe4}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(40px,5.6vw,72px);line-height:1.04}
+h2{font-size:clamp(30px,3.6vw,48px);line-height:1.1}
+h1 em,h2 em{font-style:italic;color:var(--mint)}
+.light h2 em{color:var(--teal)}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--mint)}
+.light .eyebrow{color:var(--teal)}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:var(--mute-d)}
+.light .lead{color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;padding:15px 24px;border-radius:2px;background:var(--mint);color:var(--ink);transition:background .2s}
+.btn:hover{background:#B5DEDA}
+.link{font-size:15px;font-weight:500;border-bottom:1px solid currentColor;padding-bottom:2px}
+.dark{background:var(--ink);color:#F4F4F1}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(20,32,48,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:#F4F4F1;font-weight:600;font-size:16px}
+.nav-r{display:flex;align-items:center;gap:26px}
+.nav-r a{font-size:14px;color:#C9D0D3}
+.nav-r a:hover{color:#fff}
+.nav-r .btn{padding:10px 16px;font-size:14px;color:var(--ink)}
+@media(max-width:700px){.nav-r a.hide-m{display:none}.wrap{padding:0 22px}}
+/* hero */
+.hero{padding:96px 0 104px}
+.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.qlogo{display:inline-flex;align-items:center;gap:10px;font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:#F4F4F1;margin-bottom:26px}
+.qlogo span{width:34px;height:34px;border-radius:9px;background:var(--q-indigo);display:flex;align-items:center;justify-content:center}
+.hero h1{margin-top:20px}
+.hero .lead{margin-top:26px;max-width:540px}
+.hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:26px;margin-top:38px}
+@media(max-width:960px){.hero .grid{grid-template-columns:1fr;gap:48px}}
+/* sections */
+section{padding:104px 0}
+.head{max-width:760px;margin-bottom:56px}
+.head h2{margin-top:16px}
+.head .lead{margin-top:18px}
+/* dolor */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.pain{padding:30px 28px 10px 0}
+.pain+.pain{padding-left:28px;border-left:1px solid var(--line)}
+.pain b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.3;margin-bottom:10px}
+.pain p{color:var(--mute);font-size:16px}
+@media(max-width:860px){.pains{grid-template-columns:1fr}.pain+.pain{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+/* pasos */
+.step{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
+.step:nth-child(even) .txt{order:2}
+.step .n{font-family:var(--serif);font-size:15px;color:var(--teal);letter-spacing:.06em}
+.step h3{font-size:clamp(26px,2.6vw,36px);line-height:1.15;margin:10px 0 16px}
+.step p{color:var(--mute);font-size:17px}
+.step ul{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:8px}
+.step li{font-size:15.5px;color:var(--ink);padding-left:22px;position:relative}
+.step li:before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--mint)}
+@media(max-width:960px){.step{grid-template-columns:1fr;gap:32px}.step:nth-child(even) .txt{order:0}}
+/* maqueta estilo Quadrant */
+.qm{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--q-paper);border:1px solid var(--q-line);border-radius:16px;padding:18px;box-shadow:0 30px 60px -30px rgba(20,32,48,.35);color:var(--q-ink);font-size:13.5px;line-height:1.45;position:relative;overflow:hidden}
+.qm .bar{display:flex;align-items:center;gap:8px;margin:-4px 0 14px;color:var(--q-ink3);font-size:12px}
+.qm .bar .dots{display:flex;gap:5px;margin-right:6px}.qm .bar .dots i{width:9px;height:9px;border-radius:50%;background:#e1dcd2}
+.qm .panel{background:#fff;border:1px solid var(--q-line);border-radius:12px;padding:14px 16px}
+.qm .st{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--q-ink4);font-weight:600;margin-bottom:8px}
+.card{background:#fff;border:1px solid #ede8df;border-left:3px solid var(--q-line);border-radius:9px;padding:8px 10px}
+.card .t{font-weight:500;font-size:13.5px}
+.card .nx{color:var(--q-indigo);font-size:12px;margin-top:3px}
+.card .ft{display:flex;align-items:center;gap:8px;border-top:1px solid var(--q-soft);margin-top:6px;padding-top:5px;font-size:11px;color:var(--q-ink3)}
+.due{border-radius:5px;padding:1px 6px;font-weight:500}
+.due.r{color:#9b2f1c;background:#fbe7e2}.due.o{color:#8a5a1f;background:#f9efdf}.due.g{color:#2e6b54;background:#e7f1ec}
+.av{width:21px;height:21px;border-radius:50%;background:var(--q-tint);color:var(--q-indigo);font-size:9.5px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-left:auto}
+.who{color:var(--q-indigo);background:#eeedf6;border-radius:999px;padding:1px 7px;font-size:11px;margin-left:6px;white-space:nowrap}
+/* animación al entrar */
+.qm .a{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*1s)}
+.qm.play .a{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.qm .a{opacity:1;transform:none;transition:none}}
+/* 1 chat */
+.chat{background:#e7ebef;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;min-height:300px}
+.tg-head{display:flex;align-items:center;gap:10px;background:#fff;border-radius:10px;padding:8px 12px;margin-bottom:4px}
+.tg-head span{width:30px;height:30px;border-radius:50%;background:var(--q-indigo);display:flex;align-items:center;justify-content:center}
+.tg-head b{font-size:13.5px}.tg-head small{display:block;color:var(--q-ink4);font-size:11px}
+.msg{max-width:84%;padding:9px 12px;border-radius:12px;font-size:13px;line-height:1.45;background:#fff}
+.msg.me{align-self:flex-end;background:#dff3e4;border-bottom-right-radius:4px}
+.msg.bot{border-bottom-left-radius:4px}
+.voice{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#2e6b54}
+.voice i{flex:1;height:18px;background:repeating-linear-gradient(90deg,#2e6b54 0 2px,transparent 2px 5px);opacity:.55;border-radius:2px;min-width:90px}
+.msg small{display:block;color:var(--q-ink4);font-size:11px;margin-top:4px}
+.chans{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chans span{background:#fff;border:1px solid var(--q-line);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--q-ink3)}
+/* 2 matriz */
+.mx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qd{background:#fff;border:1px solid var(--q-line);border-radius:12px;padding:10px;min-height:150px;display:flex;flex-direction:column;gap:7px}
+.qd h4{margin:0;font-size:12.5px;font-weight:600;display:flex;gap:6px;align-items:center}
+.qd h4 small{color:var(--q-ink4);font-weight:400;font-size:10.5px}
+.ghost{border:1px dashed var(--q-line);border-radius:9px;height:40px}
+.fly{transition:transform 1.4s cubic-bezier(.3,.7,.2,1) .6s,opacity .5s .4s}
+.qm:not(.play) .fly{transform:translate(55%,120%);opacity:0}
+.tagnew{display:inline-block;background:#fff1d2;color:#8a5a1f;border-radius:999px;font-size:10.5px;font-weight:600;padding:1px 7px;margin-left:6px}
+/* 3 plan */
+.steps{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.steps li{font-size:13px}
+.ok{color:var(--sc);font-weight:600}
+.known{border-left:3px solid var(--sc);background:#eef6f1;border-radius:0 8px 8px 0;padding:9px 12px;margin-top:12px;font-size:12.5px}
+.miss{border-left:3px solid #d08a16;background:#fff6e5;border-radius:0 8px 8px 0;padding:9px 12px;margin-top:8px;font-size:12.5px}
+.known ul,.miss ul{margin:5px 0 0;padding-left:18px}
+/* 4 investiga */
+.rs{display:flex;flex-direction:column;gap:8px}
+.rsi{background:#fff;border:1px solid var(--q-line);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start}
+.rsi .ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
+.rsi b{display:block;font-size:13px;font-weight:600}.rsi span{font-size:12px;color:var(--q-ink3)}
+.meter{height:6px;background:var(--q-soft);border-radius:3px;margin-top:6px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--sc);transition:width 1.6s ease 1.2s}
+.qm.play .meter i{width:82%}
+/* 5 aprobar */
+.mail{background:#fff;border:1px solid var(--q-line);border-radius:12px;padding:14px 16px}
+.mail .row{font-size:12.5px;color:var(--q-ink3);padding:3px 0;border-bottom:1px solid var(--q-soft)}
+.mail .row b{color:var(--q-ink);font-weight:500}
+.mail .body{white-space:pre-line;font-size:13px;color:#2a2723;padding:10px 0;line-height:1.55}
+.go{display:block;text-align:center;background:var(--q-indigo);color:#fff;border-radius:9px;padding:11px;font-weight:500;font-size:13.5px;position:relative;overflow:hidden}
+.go .s1,.go .s2{display:block;transition:transform .5s ease 2.2s,opacity .5s ease 2.2s}
+.go .s2{position:absolute;inset:0;padding:11px;background:var(--sc);transform:translateY(100%)}
+.qm.play .go .s2{transform:none}
+.qm.play .go .s1{opacity:0}
+.cursor{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(51,56,107,.25);border:2px solid var(--q-indigo);right:30%;bottom:30px;opacity:0;transition:opacity .3s 1.6s,transform .25s 2s}
+.qm.play .cursor{opacity:1;transform:scale(.7)}
+/* 6 avisos */
+.notif{display:flex;flex-direction:column;gap:9px}
+.nt{background:#fff;border-radius:12px;padding:10px 12px;display:flex;gap:10px;border:1px solid var(--q-line)}
+.nt .ic{width:30px;height:30px;border-radius:8px;background:var(--q-indigo);display:flex;align-items:center;justify-content:center;flex:none}
+.nt b{display:block;font-size:12.5px}.nt span{font-size:12.5px;color:#4a4540}.nt small{display:block;color:var(--q-ink4);font-size:11px;margin-top:2px}
+/* 7 tablero */
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{background:#fff;border:1px solid var(--q-line);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--q-ink3);font-weight:500}
+.chip.on{outline:2px solid var(--q-indigo);outline-offset:-2px;color:var(--q-indigo);background:var(--q-tint)}
+.newsbar{background:#fff6e3;border:1px solid #e3c48a;border-radius:10px;padding:8px 11px;font-size:12px;color:#7a5212;font-weight:600;margin-bottom:10px}
+.mini{display:flex;flex-direction:column;gap:7px}
+/* para quién + funciones */
+.fit{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fit div{border:1px solid var(--line-d);padding:26px 24px}
+.fit b{display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.3;color:#fff;margin-bottom:8px}
+.fit p{color:var(--mute-d);font-size:15.5px}
+@media(max-width:860px){.fit{grid-template-columns:1fr}}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.feat{padding:26px 22px 24px 0}
+.feat+.feat{padding-left:22px;border-left:1px solid var(--line)}
+.feat b{display:block;font-size:15px;font-weight:600;margin-bottom:6px}
+.feat p{color:var(--mute);font-size:14.5px;line-height:1.55}
+@media(max-width:900px){.feats{grid-template-columns:1fr 1fr}.feat:nth-child(3){padding-left:0;border-left:0}.feat:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:560px){.feats{grid-template-columns:1fr}.feat+.feat{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+.cta{padding:120px 0;text-align:left}
+.cta h2{font-size:clamp(36px,4.8vw,62px);max-width:820px}
+.cta .lead{margin-top:22px;max-width:620px}
+.cta .actions{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:36px}
+footer{background:var(--ink-2);color:var(--mute-d);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:36px;padding-bottom:36px}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+ <a href="/" class="brand"><svg width="24" height="29" viewBox="0 0 366 440" aria-hidden="true"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>Darwin Optima</a>
+ <div class="nav-r"><a class="hide-m" href="/productos">Soluciones</a><a class="hide-m" href="#como">Cómo funciona</a><a class="btn" href="mailto:augusto@darwinoptima.com?subject=Quiero%20Quadrant" onclick="window.umami&&umami.track('Quiero Quadrant (nav)')">Quiero Quadrant</a></div>
+</div></header>
+
+<section class="dark hero"><div class="wrap grid">
+ <div>
+  <div class="qlogo"><span><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2.4" fill="#C14A33"/><rect x="13" y="2" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"/><rect x="2" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"/><rect x="13" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.32)"/></svg></span>Quadrant</div>
+  <p class="eyebrow">Asistente de pendientes con IA</p>
+  <h1>Tus pendientes no se olvidan. <em>Se resuelven.</em></h1>
+  <p class="lead">Le cuentas qué hay que hacer, como se lo dirías a un asistente. Quadrant lo ordena, arma el plan, redacta los mensajes y hace el seguimiento. Tú solo apruebas.</p>
+  <div class="actions"><a class="btn" href="mailto:augusto@darwinoptima.com?subject=Quiero%20Quadrant" onclick="window.umami&&umami.track('Quiero Quadrant (hero)')">Quiero Quadrant <span aria-hidden="true">→</span></a><a class="link" href="#como" style="color:var(--mint)">Ver cómo funciona</a></div>
+ </div>
+ <div class="qm" id="heroMock">
+  <div class="bar"><span class="dots"><i></i><i></i><i></i></span>Quadrant · Tablero</div>
+  <div class="mx">
+   <div class="qd a" style="--d:.1"><h4 style="color:var(--do)">⚡ Hazlo ya</h4>
+    <div class="card" style="border-left-color:var(--do)"><div class="t">Responder la observación de la factura</div><div class="nx">→ Correo listo para aprobar</div><div class="ft"><span class="due r">🔴 Hoy</span><span class="av">PR</span></div></div>
+    <div class="card" style="border-left-color:var(--do)"><div class="t">Renovar la póliza del local</div><div class="ft"><span class="due o">🟠 18 oct</span><span class="av">RS</span></div></div></div>
+   <div class="qd a" style="--d:.25"><h4 style="color:var(--sc)">📅 Agéndalo</h4>
+    <div class="card" style="border-left-color:var(--sc)"><div class="t">Preparar el presupuesto 2027</div><div class="ft"><span class="due g">🟢 15 nov</span></div></div></div>
+   <div class="qd a" style="--d:.4"><h4 style="color:var(--de)">🤝 Delégalo</h4>
+    <div class="card" style="border-left-color:var(--de)"><div class="t">Cotizar el mantenimiento</div><div class="nx">→ Seguimiento enviado el lunes</div></div></div>
+   <div class="qd a" style="--d:.55"><h4 style="color:var(--dl)">🗑️ Descártalo</h4><div class="ghost"></div></div>
+  </div>
+ </div>
+</div></section>
+
+<section class="light"><div class="wrap">
+ <div class="head"><p class="eyebrow">El problema</p><h2>Tienes mil pendientes y <em>todos dependen de otros.</em></h2></div>
+ <div class="pains">
+  <div class="pain"><b>Están regados por todos lados.</b><p>En WhatsApp, en el correo, en notas sueltas y en tu cabeza. Lo urgente se mezcla con lo que puede esperar.</p></div>
+  <div class="pain"><b>Los seguimientos se olvidan.</b><p>Escribiste a la contadora, al proveedor, a la aseguradora… y nadie respondió. Te enteras cuando ya venció.</p></div>
+  <div class="pain"><b>Tú terminas persiguiendo a todos.</b><p>Redactar, recordar, buscar el número de póliza o el formulario correcto: horas que no estás dirigiendo tu negocio.</p></div>
+ </div>
+</div></section>
+
+<section class="light" id="como" style="padding-top:40px"><div class="wrap">
+ <div class="head"><p class="eyebrow">Cómo funciona</p><h2>Así trabaja Quadrant, <em>de principio a fin.</em></h2><p class="lead">Un ejemplo real de cómo resuelve un pendiente: responder la observación de una factura que vence hoy.</p></div>
+
+ <div class="steps-list">
+  <div class="step">
+   <div class="txt"><span class="n">01</span><h3>Se lo cuentas como a un asistente</h3><p>Un audio por Telegram, un correo reenviado, un WhatsApp o la foto de una lista escrita a mano. No llenas formularios: Quadrant entiende el mensaje y crea la tarea.</p>
+    <ul><li>Telegram, WhatsApp, correo, audio, foto o PDF</li><li>Detecta fecha, contacto y lo que hay que lograr</li><li>En español o en inglés</li></ul></div>
+   <div class="qm">
+    <div class="chat">
+     <div class="tg-head a"><span><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="2.4" fill="#C14A33"/><rect x="13" y="2" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.4)"/><rect x="2" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.4)"/><rect x="13" y="13" width="9" height="9" rx="2.4" fill="rgba(246,244,239,0.4)"/></svg></span><div><b>Quadrant</b><small>bot de Telegram</small></div></div>
+     <div class="msg me a" style="--d:.3"><div class="voice">🎤 <i></i> 0:14</div><small>«Hay que responder la observación de la factura E001-245, vence hoy. Que lo vea Paola.»</small></div>
+     <div class="msg bot a" style="--d:1.1">✅ Anotada en <b style="color:var(--do)">⚡ Hazlo ya</b>: <i>Responder la observación de la factura E001-245</i>.<br>Vence hoy · contacto: Paola Ríos.<small>Te armo el plan en un momento.</small></div>
+    </div>
+    <div class="chans a" style="--d:1.6"><span>✈️ Telegram</span><span>💬 WhatsApp</span><span>📩 Correo</span><span>🎤 Audio</span><span>📷 Foto de una lista</span></div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">02</span><h3>Se prioriza sola</h3><p>Quadrant ubica cada tarea en la matriz de Eisenhower según la fecha y tus criterios. Si algo se acerca al vencimiento, sube sola a «Hazlo ya». Siempre sabes qué atender primero.</p>
+    <ul><li>Urgente e importante, sin pensarlo</li><li>Tus reglas de prioridad, visibles y editables</li><li>Las tareas se mueven solas cuando cambia la fecha</li></ul></div>
+   <div class="qm">
+    <div class="mx">
+     <div class="qd"><h4 style="color:var(--do)">⚡ Hazlo ya <small>Urgente · Importante</small></h4>
+      <div class="card fly" style="border-left-color:var(--do)"><div class="t">Responder la observación de la factura E001-245<span class="tagnew">Nueva</span></div><div class="ft"><span class="due r">🔴 Hoy</span><span class="av">PR</span></div></div>
+      <div class="card" style="border-left-color:var(--do)"><div class="t">Renovar la póliza del local</div><div class="ft"><span class="due o">🟠 18 oct</span></div></div></div>
+     <div class="qd"><h4 style="color:var(--sc)">📅 Agéndalo <small>No urgente</small></h4>
+      <div class="card" style="border-left-color:var(--sc)"><div class="t">Preparar el presupuesto 2027</div><div class="ft"><span class="due g">🟢 15 nov</span></div></div></div>
+     <div class="qd"><h4 style="color:var(--de)">🤝 Delégalo</h4>
+      <div class="card" style="border-left-color:var(--de)"><div class="t">Recoger los estados de cuenta</div><div class="ft"><span class="due o">🟠 17 oct</span><span class="av">LM</span></div></div></div>
+     <div class="qd"><h4 style="color:var(--dl)">🗑️ Descártalo</h4><div class="ghost"></div></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">03</span><h3>Arma el plan solo</h3><p>En cuanto la tarea existe, Quadrant prepara el plan: los pasos, quién hace cada uno, lo que ya sabe y lo que falta. Si llega una novedad, el plan se rehace.</p>
+    <ul><li>Pasos con responsable</li><li>Usa lo que ya hay en tus documentos</li><li>Te pregunta solo lo que no puede averiguar</li></ul></div>
+   <div class="qm">
+    <div class="panel a"><div class="st">✨ Plan de Quadrant</div><b style="font-size:14px">Enviar hoy el descargo para que la factura no quede observada.</b>
+     <ol class="steps"><li class="a" style="--d:.4"><span class="ok">✓</span> Adjuntar la guía de remisión y la orden de compra<span class="who">Quadrant</span></li><li class="a" style="--d:.6">Aprobar el correo a la contadora<span class="who">Tú</span></li><li class="a" style="--d:.8">Hacer seguimiento si no responde en 2 días<span class="who">Quadrant</span></li></ol>
+     <div class="known a" style="--d:1.1"><b>Lo que Quadrant ya sabe</b><ul><li>Factura E001-245, emitida el 2 de octubre</li><li>La guía de remisión ya está en los documentos</li><li>El plazo vence hoy</li></ul></div>
+     <div class="miss a" style="--d:1.4"><b>Falta</b><ul><li>¿La orden de compra está firmada? <small>(te lo pregunta por Telegram)</small></li></ul></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">04</span><h3>Averigua y prepara por ti</h3><p>Busca los requisitos del trámite en fuentes oficiales, encuentra el formulario correcto y lo deja prellenado con lo que ya sabe. También compara opciones y precios cuando hace falta.</p>
+    <ul><li>Requisitos con el enlace oficial</li><li>Formularios prellenados</li><li>Opciones con precio, para que tú decidas</li></ul></div>
+   <div class="qm">
+    <div class="st a">🔎 Lo que Quadrant averiguó</div>
+    <div class="rs">
+     <div class="rsi a" style="--d:.3"><span class="ic" style="background:#e7f1ec">📋</span><div><b>Requisitos para responder la observación</b><span>3 documentos · fuente oficial con enlace</span></div></div>
+     <div class="rsi a" style="--d:.6"><span class="ic" style="background:#e9eaf2">📄</span><div style="flex:1"><b>Formulario de descargo — prellenado</b><span>Datos de la empresa y de la factura completos</span><div class="meter"><i></i></div></div></div>
+     <div class="rsi a" style="--d:.9"><span class="ic" style="background:#faebe6">✉️</span><div><b>Correo a la contadora, redactado</b><span>Con los dos documentos adjuntos</span></div></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">05</span><h3>Tú apruebas. Sale desde tu correo.</h3><p>Revisas el borrador, lo corriges si quieres y apruebas. El correo sale desde tu propio Gmail, con tu firma, y queda anotado en la tarea. Nada se envía sin tu visto bueno.</p>
+    <ul><li>Desde tu Gmail, no desde un robot</li><li>Correo o WhatsApp listo, en el idioma de cada contacto</li><li>Todo queda registrado en el avance</li></ul></div>
+   <div class="qm">
+    <div class="mail a">
+     <div class="row"><b>Para:</b> Paola Ríos · contadora</div>
+     <div class="row"><b>Asunto:</b> Descargo de la factura E001-245</div>
+     <div class="body">Hola, Paola:
+
+Te adjunto la guía de remisión y la orden de compra que sustentan la factura E001-245, para responder la observación antes de que venza el plazo hoy.
+
+¿Me confirmas cuando lo presentes?
+
+Gracias,
+Martín</div>
+     <div style="font-size:12px;color:var(--q-ink3);margin-bottom:10px">📎 guia-remision.pdf · 📎 orden-compra.pdf</div>
+     <div class="go"><span class="s1">Aprobar y enviar desde tu Gmail</span><span class="s2">✅ Enviado desde tu Gmail</span></div>
+    </div>
+    <div class="cursor"></div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">06</span><h3>Hace el seguimiento y te avisa</h3><p>Si la otra persona no responde, Quadrant prepara el recordatorio. Cuando responde, lo anota en la tarea y rehace el plan. Y te avisa solo de lo que importa.</p>
+    <ul><li>Seguimiento automático a los 2 días</li><li>Aviso diario de lo que arde</li><li>Revisión semanal del tablero</li></ul></div>
+   <div class="qm">
+    <div class="notif">
+     <div class="nt a" style="--d:.2"><span class="ic">✈️</span><div><b>Sin respuesta de Paola</b><span>Pasaron 2 días. El recordatorio está listo para enviar.</span><small>Quadrant · jueves 9:00</small></div></div>
+     <div class="nt a" style="--d:.6"><span class="ic">✈️</span><div><b>📩 Paola respondió</b><span>«Ya lo presenté, te paso el cargo.» Anotado en la tarea.</span><small>Quadrant · jueves 11:42</small></div></div>
+     <div class="nt a" style="--d:1"><span class="ic">✈️</span><div><b>🔥 Esto es lo que arde hoy</b><span>2 tareas en «Hazlo ya» · 1 vence mañana.</span><small>Quadrant · viernes 8:00</small></div></div>
+     <div class="nt a" style="--d:1.4"><span class="ic">✈️</span><div><b>📋 Revisión semanal</b><span>4 cambios sugeridos en tu tablero. Tú decides.</span><small>Quadrant · lunes 7:00</small></div></div>
+    </div>
+   </div>
+  </div>
+
+  <div class="step">
+   <div class="txt"><span class="n">07</span><h3>Siempre sabes qué te toca</h3><p>Al abrir Quadrant ves las novedades desde tu última visita y, con un toque, solo las tareas cuyo siguiente paso es tuyo. Lo demás lo está moviendo Quadrant o alguien más.</p>
+    <ul><li>«Me toca»: solo lo que depende de ti</li><li>Novedades desde tu última visita</li><li>Historial de quién hizo qué y cuándo</li></ul></div>
+   <div class="qm">
+    <div class="chips a"><span class="chip">Todas 12</span><span class="chip on">👉 Me toca 3</span><span class="chip">🤝 En manos de terceros 2</span><span class="chip">📝 Faltan datos 1</span></div>
+    <div class="newsbar a" style="--d:.3">🔔 2 novedades desde tu última visita</div>
+    <div class="mini">
+     <div class="card a" style="--d:.5;border-left-color:var(--do)"><div class="t">Firmar el contrato anual con Planta Lurín</div><div class="nx">→ Revisar la cláusula de penalidad que marcó Quadrant</div><div class="ft"><span class="due o">🟠 16 oct</span><span class="av">JP</span></div></div>
+     <div class="card a" style="--d:.7;border-left-color:var(--sc)"><div class="t">Actualizar la ficha RUC</div><div class="nx">→ Entrar con Clave SOL y cambiar el domicilio fiscal</div><div class="ft"><span class="due o">🟠 21 oct</span></div></div>
+     <div class="card a" style="--d:.9;border-left-color:var(--sc)"><div class="t">Preparar el presupuesto 2027</div><div class="nx">→ Pedir a contabilidad el cierre de septiembre</div><div class="ft"><span class="due g">🟢 15 nov</span><span class="av">PR</span></div></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+ <div class="head"><p class="eyebrow">Para quién es</p><h2>Para quien tiene más pendientes <em>que horas.</em></h2></div>
+ <div class="fit">
+  <div><b>Dueños de negocio</b><p>Que hoy son el centro de todo y quieren dejar de perseguir proveedores, contadores y trámites.</p></div>
+  <div><b>Profesionales independientes</b><p>Que trabajan con muchos clientes a la vez y no pueden darse el lujo de olvidar un seguimiento.</p></div>
+  <div><b>Asistentes y equipos</b><p>Que gestionan los pendientes de otra persona y necesitan que todo quede ordenado y a la vista.</p></div>
+ </div>
+</div></section>
+
+<section class="light"><div class="wrap">
+ <div class="head"><p class="eyebrow">Además</p><h2>Hecho para el día a día real.</h2></div>
+ <div class="feats">
+  <div class="feat"><b>Bilingüe</b><p>Español e inglés. Cada contacto recibe los mensajes en su idioma.</p></div>
+  <div class="feat"><b>Tus documentos</b><p>Lee los archivos de cada tarea y avisa si algo vence o falta.</p></div>
+  <div class="feat"><b>Un tablero por cliente</b><p>Si gestionas pendientes de varias personas, cada una tiene el suyo.</p></div>
+  <div class="feat"><b>Configurado contigo</b><p>Lo dejamos funcionando con tus criterios, canales y contactos.</p></div>
+ </div>
+</div></section>
+
+<section class="dark cta"><div class="wrap">
+ <p class="eyebrow">Empieza esta semana</p>
+ <h2>Deja de perseguir pendientes. <em>Que Quadrant lo haga por ti.</em></h2>
+ <p class="lead">Escríbeme y te muestro cómo quedaría con tus propios pendientes. En una conversación vemos si Quadrant es para ti.</p>
+ <div class="actions"><a class="btn" href="mailto:augusto@darwinoptima.com?subject=Quiero%20Quadrant" onclick="window.umami&&umami.track('Quiero Quadrant (final)')">Quiero Quadrant <span aria-hidden="true">→</span></a><a class="link" style="color:var(--mint)" href="https://wa.me/51914443792?text=Hola%20Augusto%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Quadrant" target="_blank" rel="noopener" onclick="window.umami&&umami.track('WhatsApp Quadrant')">Escríbeme por WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap"><span>© Darwin Optima · Orden. Precisión. Ventaja.</span><span><a href="/">Inicio</a> · <a href="/productos">Soluciones</a> · <a href="/privacidad">Privacidad</a></span></div></footer>
+
+<script>
+(function(){
+  var mocks=[].slice.call(document.querySelectorAll('.qm'));
+  if(!('IntersectionObserver' in window)){mocks.forEach(function(m){m.classList.add('play')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('play');io.unobserve(e.target)}})},{threshold:.35});
+  mocks.forEach(function(m){io.observe(m)});
+})();
+</script>
+</body>
+</html>
