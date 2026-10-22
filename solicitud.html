@@ -163,16 +163,6 @@ footer a:hover{color:#fff}
 .formcard{max-width:860px;margin:-40px auto 0;position:relative;background:#fff;border:1px solid var(--line);padding:28px;box-shadow:0 30px 60px -40px rgba(20,32,48,.45)}
 .formcard::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--teal),var(--mint),var(--teal))}
 
-/* ---------- foto + formulario (sesión oct 2026) ---------- */
-figure{margin:0}
-.ph{display:block;width:100%;height:auto;border-radius:2px}
-.apply-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:start}
-.apply-grid .formcard{margin:-40px 0 0;max-width:none}
-.apply-aside{order:2;max-width:320px}
-.apply-aside .ph{aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
-.apply-aside p{margin-top:18px;font-family:var(--serif);font-size:20px;line-height:1.35}
-.apply-aside span{display:block;margin-top:10px;font-family:var(--sans);font-size:13px;letter-spacing:.06em;color:var(--mute)}
-@media(min-width:900px){.apply-grid{grid-template-columns:300px 1fr;column-gap:48px}.apply-aside{order:0;position:sticky;top:104px}}
 </style>
 <script>window.plausible=window.plausible||function(n,o){window.umami&&window.umami.track(n,o&&o.props)}</script>
 </head>
@@ -211,17 +201,10 @@ figure{margin:0}
 
 <section style="padding:0 0 110px">
  <div class="wrap">
-  <div class="apply-grid">
-  <aside class="apply-aside">
-   <figure><img class="ph" src="/img/web-05-solicitud-7349.webp" width="900" height="1125" loading="lazy" decoding="async" alt="Augusto Balarezo, de pie junto al ventanal, con los brazos cruzados."></figure>
-   <p>Reviso cada solicitud personalmente.</p>
-   <span>Augusto Balarezo · Darwin Optima</span>
-  </aside>
   <div class="formcard">
    <iframe id="JotFormIFrame-261875403943059" src="https://form.jotform.com/261875403943059" style="width:100%; min-width:100%; height: 539px; border: none; display: block;" title="Solicitud de Admisión — Darwin Optima" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen"></iframe>
  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
  <script>window.jotformEmbedHandler && window.jotformEmbedHandler("iframe#JotFormIFrame-261875403943059", "https://form.jotform.com/")</script>
-  </div>
   </div>
   <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--mute)">¿Prefieres conversar primero? <a href="https://wa.me/19545134295?text=Hola%20Augusto%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Darwin%20Optima" class="link" target="_blank" rel="noopener" onclick="plausible('WhatsApp')" style="color:var(--teal)">Escríbeme por WhatsApp</a></p>
  </div>
