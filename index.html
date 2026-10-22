@@ -204,7 +204,22 @@ footer nav{display:flex;flex-wrap:wrap;gap:28px}
 footer a:hover{color:#fff}
 
 .hero .wrap{position:relative}
+.hero-art{position:absolute;right:32px;top:-20px;width:360px;height:360px;opacity:.9}
+.hero-art .grid-lines line{stroke:rgba(156,209,204,.12);stroke-width:1}
+.hero-art circle{transform:translate(var(--dx),var(--dy));opacity:.35;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes settle{to{transform:translate(0,0);opacity:1}}
+.hero-art circle{transform-box:fill-box;transform-origin:center}
+@keyframes hchase{0%,17%,100%{transform:translate(0,0) scale(1);fill:var(--b)}8%{transform:translate(0,0) scale(1.9);fill:var(--c)}}
+@media(prefers-reduced-motion:reduce){.hero-art circle{animation:none;transform:none;opacity:1}}
 @media(min-width:1181px){.hero h1{max-width:700px}.hero .lead{max-width:560px}}
+@media(max-width:1180px){.hero-art{display:none}}
+@media(max-width:1180px){.hero-art{display:none}.nav .hero-art.in-nav{display:block;position:static;width:48px;height:48px;margin:0 14px 0 auto;opacity:1;flex:none}}
+@media(min-width:1181px){.hero h1{max-width:700px}.hero .lead{max-width:560px}}
+/* firma del hero */
+.byline{display:flex;align-items:center;gap:14px;margin-top:40px}
+.byline img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 22%;display:block;flex:none}
+.byline b{display:block;font-weight:600;font-size:15px;color:#F4F4F1}
+.byline span{display:block;font-size:13px;color:var(--mute-d)}
 .ico{width:30px;height:30px;fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:16px}
 .band{background:#DDEDEA;padding:96px 0}
 .band-in{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start}
@@ -222,20 +237,6 @@ footer a:hover{color:#fff}
 /* ---------- fotos (sesión oct 2026) ---------- */
 figure{margin:0}
 .ph{display:block;width:100%;height:auto;border-radius:2px}
-/* hero */
-.hero-grid{display:grid;grid-template-columns:1fr;row-gap:48px}
-.hero-photo{position:relative;z-index:1}
-.hero-photo .ph{aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
-.hero-grid .stats{margin-top:8px}
-@media(min-width:1100px){
-.hero-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);column-gap:64px;align-items:center}
-.hero-grid .hero-copy{grid-column:1;grid-row:1}
-.hero-grid .hero-photo{grid-column:2;grid-row:1}
-.hero-grid .stats{grid-column:1/-1;grid-row:2;margin-top:44px}
-.hero-grid h1{font-size:clamp(40px,4.3vw,60px);max-width:none}
-.hero-grid .lead{max-width:none}
-.hero-photo .ph{aspect-ratio:5/4;object-position:50% 36%}
-}
 /* ¿encajamos? */
 .cta-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
 .cta-grid .ph{aspect-ratio:3/2;object-fit:cover}
@@ -264,8 +265,8 @@ figure{margin:0}
 </header>
 
 <section class="dark hero">
- <div class="wrap hero-grid">
-  <div class="hero-copy">
+ <div class="wrap">
+  <svg class="hero-art" viewBox="0 0 360 360" aria-hidden="true"><g class="grid-lines"><line x1="40" y1="40" x2="320" y2="40"/><line x1="40" y1="96" x2="320" y2="96"/><line x1="40" y1="152" x2="320" y2="152"/><line x1="40" y1="208" x2="320" y2="208"/><line x1="40" y1="264" x2="320" y2="264"/><line x1="40" y1="320" x2="320" y2="320"/><line x1="40" y1="40" x2="40" y2="320"/><line x1="96" y1="40" x2="96" y2="320"/><line x1="152" y1="40" x2="152" y2="320"/><line x1="208" y1="40" x2="208" y2="320"/><line x1="264" y1="40" x2="264" y2="320"/><line x1="320" y1="40" x2="320" y2="320"/></g><g class="dots"><circle cx="40" cy="40" r="7" fill="#F4F4F1" style="--dx:25px;--dy:-63px;animation-delay:0.36s"/><circle cx="96" cy="40" r="5" fill="#9CD1CC" style="--dx:-116px;--dy:-103px;animation-delay:0.74s"/><circle cx="152" cy="40" r="5" fill="#9CD1CC" style="--dx:-92px;--dy:47px;animation-delay:0.52s"/><circle cx="208" cy="40" r="5" fill="#9CD1CC" style="--dx:119px;--dy:-31px;animation-delay:0.03s"/><circle cx="264" cy="40" r="5" fill="#9CD1CC" style="--dx:82px;--dy:74px;animation-delay:0.06s"/><circle cx="320" cy="40" r="7" fill="#9CD1CC" style="--dx:-94px;--dy:77px;animation-delay:0.05s"/><circle cx="40" cy="96" r="5" fill="#9CD1CC" style="--dx:-77px;--dy:-26px;animation-delay:0.57s"/><circle cx="96" cy="96" r="5" fill="#F4F4F1" style="--dx:-109px;--dy:63px;animation-delay:0.04s"/><circle cx="152" cy="96" r="5" fill="#9CD1CC" style="--dx:-27px;--dy:-117px;animation-delay:0.5s"/><circle cx="208" cy="96" r="5" fill="#9CD1CC" style="--dx:-72px;--dy:8px;animation-delay:0.38s"/><circle cx="264" cy="96" r="7" fill="#9CD1CC" style="--dx:136px;--dy:-80px;animation-delay:0.51s"/><circle cx="320" cy="96" r="5" fill="#9CD1CC" style="--dx:-48px;--dy:-88px;animation-delay:0.52s"/><circle cx="40" cy="152" r="5" fill="#9CD1CC" style="--dx:-44px;--dy:50px;animation-delay:0.09s"/><circle cx="96" cy="152" r="5" fill="#9CD1CC" style="--dx:-108px;--dy:-110px;animation-delay:0.56s"/><circle cx="152" cy="152" r="5" fill="#F4F4F1" style="--dx:114px;--dy:132px;animation-delay:0.38s"/><circle cx="208" cy="152" r="7" fill="#9CD1CC" style="--dx:20px;--dy:98px;animation-delay:0.53s"/><circle cx="264" cy="152" r="5" fill="#9CD1CC" style="--dx:92px;--dy:45px;animation-delay:0.27s"/><circle cx="320" cy="152" r="5" fill="#9CD1CC" style="--dx:-48px;--dy:-16px;animation-delay:0.07s"/><circle cx="40" cy="208" r="5" fill="#9CD1CC" style="--dx:13px;--dy:128px;animation-delay:0.45s"/><circle cx="96" cy="208" r="5" fill="#9CD1CC" style="--dx:35px;--dy:89px;animation-delay:0.26s"/><circle cx="152" cy="208" r="7" fill="#9CD1CC" style="--dx:-103px;--dy:-80px;animation-delay:0.46s"/><circle cx="208" cy="208" r="5" fill="#F4F4F1" style="--dx:-56px;--dy:35px;animation-delay:0.14s"/><circle cx="264" cy="208" r="5" fill="#9CD1CC" style="--dx:110px;--dy:75px;animation-delay:0.04s"/><circle cx="320" cy="208" r="5" fill="#9CD1CC" style="--dx:-101px;--dy:20px;animation-delay:0.31s"/><circle cx="40" cy="264" r="5" fill="#9CD1CC" style="--dx:39px;--dy:114px;animation-delay:0.52s"/><circle cx="96" cy="264" r="7" fill="#9CD1CC" style="--dx:93px;--dy:-105px;animation-delay:0.76s"/><circle cx="152" cy="264" r="5" fill="#9CD1CC" style="--dx:-2px;--dy:102px;animation-delay:0.63s"/><circle cx="208" cy="264" r="5" fill="#9CD1CC" style="--dx:-107px;--dy:-109px;animation-delay:0.66s"/><circle cx="264" cy="264" r="5" fill="#F4F4F1" style="--dx:18px;--dy:88px;animation-delay:0.26s"/><circle cx="320" cy="264" r="5" fill="#9CD1CC" style="--dx:57px;--dy:37px;animation-delay:0.02s"/><circle cx="40" cy="320" r="7" fill="#9CD1CC" style="--dx:96px;--dy:41px;animation-delay:0.15s"/><circle cx="96" cy="320" r="5" fill="#9CD1CC" style="--dx:-81px;--dy:112px;animation-delay:0.05s"/><circle cx="152" cy="320" r="5" fill="#9CD1CC" style="--dx:7px;--dy:-74px;animation-delay:0.66s"/><circle cx="208" cy="320" r="5" fill="#9CD1CC" style="--dx:63px;--dy:60px;animation-delay:0.83s"/><circle cx="264" cy="320" r="5" fill="#9CD1CC" style="--dx:114px;--dy:-99px;animation-delay:0.15s"/><circle cx="320" cy="320" r="7" fill="#F4F4F1" style="--dx:65px;--dy:2px;animation-delay:0.8s"/></g></svg>
   <p class="eyebrow">Consultoría de reordenamiento empresarial</p>
   <h1>¿Sientes que el dinero se escapa y no sabes por dónde?</h1>
   <p class="lead">Ayudo a gente que es muy buena en lo suyo a recuperar el control de sus negocios y hacerlos crecer — con método, con números reales y con herramientas hechas a su medida.</p>
@@ -273,13 +274,10 @@ figure{margin:0}
    <a href="/solicitud" class="btn" onclick="plausible('Solicitar admisión')">Solicitar admisión <span aria-hidden="true">→</span></a>
    <a href="#metodo" class="link">Ver cómo trabajo</a>
   </div>
+  <div class="byline">
+   <img src="/img/web-00-firma-7462.webp" width="320" height="320" alt="Augusto Balarezo">
+   <div><b>Augusto Balarezo</b><span>Fundador de Darwin Optima</span></div>
   </div>
-  <figure class="hero-photo">
-   <picture>
-    <source media="(max-width:1099px)" srcset="/img/web-02-hero-vertical-7460.webp">
-    <img class="ph" src="/img/web-01-hero-7462.webp" width="1760" height="1408" fetchpriority="high" decoding="async" alt="Augusto Balarezo, fundador de Darwin Optima, de pie junto al ventanal de una sala de directorio.">
-   </picture>
-  </figure>
   <div class="stats">
    <div class="stat"><b>11 años</b><span>en reordenamiento empresarial</span></div>
    <div class="stat"><b>9.95x</b><span>más efectivo en 12 meses, en un solo cliente</span></div>
@@ -485,6 +483,46 @@ figure{margin:0}
   </nav>
  </div>
 </footer>
+
+<script>/* cuadrícula del inicio: los puntos se acomodan y luego uno a la vez crece con el color de una solución. Animado con JS sobre atributos SVG para que funcione igual en iPhone, iPad y escritorio. */
+(function(){
+  var svg=document.querySelector('.hero-art'); if(!svg) return;
+  var home=svg.parentNode,next=svg.nextSibling,navw=document.querySelector('.nav .wrap'),burger=navw&&navw.querySelector('.burger'),mq=window.matchMedia&&matchMedia('(max-width:1180px)');function place(){if(mq&&mq.matches&&navw){navw.insertBefore(svg,burger||null);svg.classList.add('in-nav')}else{home.insertBefore(svg,next);svg.classList.remove('in-nav')}}place();if(mq){mq.addEventListener?mq.addEventListener('change',place):mq.addListener(place)}
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dots=[].slice.call(svg.querySelectorAll('circle')).map(function(el){
+    var st=el.style, d={el:el,x:+el.getAttribute('cx'),y:+el.getAttribute('cy'),r:+el.getAttribute('r'),f:el.getAttribute('fill')||'#9CD1CC',
+      dx:parseFloat(st.getPropertyValue('--dx'))||0,dy:parseFloat(st.getPropertyValue('--dy'))||0,dl:parseFloat(st.animationDelay)||0};
+    el.style.animation='none'; el.style.transform='none'; el.style.opacity='1';
+    return d;
+  });
+  var path=[2,10,17,27,31,18], cols=['#2C5F8A','#E0A526','#C14A33','#2E9E5B','#B8860B','#5CC698'];
+  function rgb(h){h=h.replace('#','');return [parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)]}
+  function mix(a,b,k){a=rgb(a);b=rgb(b);return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*k)}).join(',')+')'}
+  function out(k){return 1-Math.pow(1-k,3)}
+  function io(k){return k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2}
+  var SETTLE=2.4, START=reduce?0.6:3, STEP=1.4, PERIOD=8.4, t0=null;
+  function frame(ts){
+    if(t0===null) t0=ts;
+    var t=(ts-t0)/1000, W=svg.getBoundingClientRect().width, F=W<80?2.4:(W<200?1.9:(W<280?1.35:1));
+    dots.forEach(function(d,i){
+      var k=reduce?1:Math.max(0,Math.min(1,(t-d.dl)/SETTLE)), e=out(k);
+      d.el.setAttribute('cx',(d.x+d.dx*(1-e)).toFixed(2));
+      d.el.setAttribute('cy',(d.y+d.dy*(1-e)).toFixed(2));
+      d.el.style.opacity=(0.35+0.65*e).toFixed(3);
+      var p=path.indexOf(i), s=0; if(p<0) d.el.setAttribute('r',(d.r*F).toFixed(2));
+      if(p>=0){
+        var tt=t-START-p*STEP;
+        if(tt>=0){ var ph=(tt%PERIOD)/PERIOD;
+          if(ph<0.08) s=io(ph/0.08); else if(ph<0.17) s=1-io((ph-0.08)/0.09); }
+        d.el.setAttribute('r',(d.r*F*(1+0.9*s)).toFixed(2));
+        d.el.setAttribute('fill',s>0.001?mix(d.f,cols[p],s):d.f);
+      }
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 
 </body>
 </html>
