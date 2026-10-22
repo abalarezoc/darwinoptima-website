@@ -167,11 +167,13 @@ figure{margin:0}
 .ph-hero img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:2px}
 .ph-hero{max-width:170px}
 @media(min-width:860px){.page-hero .wrap{grid-template-columns:200px minmax(0,1fr);column-gap:44px}.ph-hero{max-width:none;padding-top:6px}}
-.formcard{padding:12px}
-.formcard iframe{margin-top:-26px}
 .formcard{max-width:860px;margin:-40px auto 0;position:relative;background:#fff;border:1px solid var(--line);padding:28px;box-shadow:0 30px 60px -40px rgba(20,32,48,.45)}
 .formcard::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--teal),var(--mint),var(--teal))}
 
+/* el formulario de Jotform trae ~74px de relleno propio arriba; se recorta desde fuera */
+.formcard{padding:12px}
+.formcard iframe{margin-top:-24px}
+@media(min-width:860px){.formcard iframe{margin-top:-56px}}
 </style>
 <script>window.plausible=window.plausible||function(n,o){window.umami&&window.umami.track(n,o&&o.props)}</script>
 </head>
