@@ -131,22 +131,26 @@ section{padding:104px 0}
 .feat p{color:var(--mute);font-size:14.5px;line-height:1.55}
 @media(max-width:900px){.feats{grid-template-columns:1fr 1fr}.feat:nth-child(3){padding-left:0;border-left:0}.feat:nth-child(n+3){border-top:1px solid var(--line)}}
 @media(max-width:560px){.feats{grid-template-columns:1fr}.feat+.feat{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
-.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
+.plans{display:grid;grid-template-columns:1fr 1fr .8fr;gap:18px;align-items:start}
 .plan .sub{color:var(--ink);font-size:15.5px;margin-top:12px;font-weight:500;line-height:1.45}
 .plan ul{margin:14px 0 0;padding:0;list-style:none}
 .plan li{position:relative;padding-left:18px;margin-top:9px;color:var(--mute);font-size:14.5px;line-height:1.5}
 .plan li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
-.planfoot{margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.planfoot p{color:var(--mute);font-size:14px;line-height:1.55}
-.planfoot b{color:var(--ink);font-weight:500}
-@media(max-width:860px){.planfoot{grid-template-columns:1fr}}
 .plan{background:#fff;border:1px solid var(--line);padding:28px 26px}
 .plan.hl{border:2px solid var(--teal)}
 .plan h3{font-size:24px}
 .plan .pr{font-family:var(--serif);font-size:38px;margin-top:10px}
 .plan .pr small{font-family:var(--sans);font-size:14px;color:var(--mute)}
 .plan p{color:var(--mute);font-size:15px;margin-top:12px}
-@media(max-width:860px){.plans{grid-template-columns:1fr}}
+.plan.impl{background:transparent}
+.plan.impl h3{font-size:20px}
+.plan.impl .pr{font-size:26px;margin-top:8px}
+.plan.impl li{font-size:14px}
+.plan .fine{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--mute);font-size:13.5px;line-height:1.5}
+.pricenote{margin-top:20px;color:var(--mute);font-size:14px}
+.pricenote b{color:var(--ink);font-weight:500}
+@media(max-width:1000px){.plans{grid-template-columns:1fr 1fr}.plan.impl{grid-column:1/-1}}
+@media(max-width:700px){.plans{grid-template-columns:1fr}}
 .cta{padding:120px 0}
 .cta h2{font-size:clamp(36px,4.8vw,62px);max-width:820px}
 .cta .lead{margin-top:22px;max-width:620px}
@@ -217,38 +221,43 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
  <div class="head"><p class="eyebrow">Planes</p><h2>Dos versiones. <em>La diferencia es cuánto trabajo te quita.</em></h2></div>
  <div class="plans">
   <div class="plan"><h3>Esencial</h3><div class="pr">US$24 <small>al mes</small></div>
-   <p class="sub">El sistema de agenda completo, funcionando solo.</p>
+   <p class="sub">Tu agenda funcionando sola, sin que tú coordines nada.</p>
    <ul>
-    <li>Portal propio para cada cliente, con autoregistro por código</li>
-    <li>Horario fijo semanal y sesiones puntuales</li>
-    <li>Tu cliente reagenda y cancela solo, con la anticipación que tú definas</li>
-    <li>Ficha e historial sesión a sesión, que tu cliente también ve</li>
-    <li>Panel con tu día, tus clientes y el mes completo</li>
-    <li>Agendas tú mismo desde la ficha de cualquier cliente</li>
-    <li>Tu horario de atención, editable por ti desde el panel</li>
-    <li>Google Calendar: eventos reales y 12 semanas siempre creadas por delante</li>
-    <li>«¿Tu horario sigue igual?» automático cada 30, 60 o 90 días</li>
-    <li>Instancia propia, correos con tu dominio, hosting y respaldos</li>
+    <li>Cada cliente entra a su propia página desde el celular, sin instalar nada</li>
+    <li>Reserva su hora de todas las semanas, o una cita suelta</li>
+    <li>Mueve o cancela su cita sin escribirte, respetando el plazo mínimo que tú pongas</li>
+    <li>Tú anotas cómo fue la sesión y él ve su propia evolución</li>
+    <li>Abres tu pantalla y ves a quién atiendes hoy y cómo va el mes</li>
+    <li>Si te piden la cita por teléfono, se la agendas tú</li>
+    <li>Tú decides qué días y a qué horas atiendes, y lo cambias cuando quieras</li>
+    <li>Cada cita aparece en el Google Calendar que ya usas</li>
+    <li>Cada cierto tiempo le pregunta al cliente si sigue viniendo, para que no te queden horas apartadas que nadie usa</li>
+    <li>Tu página con tu nombre y tus colores; tus datos no se mezclan con los de nadie</li>
    </ul></div>
   <div class="plan hl"><h3>Crecimiento</h3><div class="pr">US$40 <small>al mes</small></div>
-   <p class="sub">Todo lo de Esencial, y además dejas de entrar al panel: le hablas.</p>
+   <p class="sub">Todo lo anterior, y además dejas de entrar a la pantalla: le hablas.</p>
    <ul>
-    <li>Asistente por texto o por voz, desde el panel o por Telegram</li>
-    <li>Le pides tu agenda, buscas un cliente, lo registras, agendas, reagendas o cancelas hablándole</li>
-    <li>Antes de cambiar algo te lo resume y te pide confirmación: nunca actúa solo</li>
-    <li>Le reenvías la captura de un WhatsApp y él registra la cita</li>
-    <li>Buenos días a las 6:30 a.&nbsp;m. con tu agenda del día</li>
-    <li>Pantalla de recordatorios: las sesiones de mañana con el mensaje ya escrito</li>
-    <li>Aviso automático cuando un cliente reserva, reagenda o cancela</li>
-    <li>Reenvías el acceso de un cliente por WhatsApp desde el panel</li>
-    <li>Reportes de ocupación y evolución</li>
-    <li>Soporte prioritario en 24 horas</li>
+    <li>Un asistente dentro de Telegram al que le escribes o le hablas, como a una persona</li>
+    <li>Le dices «¿qué tengo mañana?» o «muévele la cita a Ana al jueves», y lo hace</li>
+    <li>Antes de cambiar algo te muestra qué va a hacer y espera tu sí</li>
+    <li>Le reenvías la foto de un WhatsApp y saca la cita de ahí</li>
+    <li>Cada mañana te manda la lista de quién viene hoy</li>
+    <li>Te arma los recordatorios de mañana con el mensaje ya escrito; tú solo lo envías</li>
+    <li>Te avisa apenas alguien reserva, mueve o cancela</li>
+    <li>Le reenvías a un cliente su acceso por WhatsApp, sin buscar nada</li>
+    <li>Ves cuántas horas estás llenando y qué clientes van mejorando</li>
    </ul></div>
+  <aside class="plan impl"><h3>Implementación</h3><div class="pr">US$120 <small>base, una sola vez</small></div>
+   <p class="sub">Lo dejo todo listo y funcionando.</p>
+   <ul>
+    <li>Tu página armada con tu nombre, tus colores y tus horarios reales</li>
+    <li>La ficha hecha para tu rubro</li>
+    <li>Conectado a tu Google Calendar</li>
+    <li>Te acompaño en las primeras semanas</li>
+   </ul>
+   <p class="fine">Si tu caso resulta más complejo, lo sabes antes de empezar, nunca después.</p></aside>
  </div>
- <div class="planfoot">
-  <p><b>Implementación: base US$120, una sola vez.</b> Si tu caso resulta más complejo, lo sabes antes de empezar, nunca después. Incluye diagnóstico, tu instancia propia, tus horarios reales, la ficha de tu rubro, tu Google Calendar, tu subdominio y acompañamiento en el arranque.</p>
-  <p><b>Precios de introducción.</b> Se revisan una vez al año.</p>
- </div>
+ <p class="pricenote"><b>Precios de introducción.</b> Se revisan una vez al año.</p>
 </div></section>
 <section class="dark cta"><div class="wrap">
  <p class="eyebrow">En una o dos semanas</p>
