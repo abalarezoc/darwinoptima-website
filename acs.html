@@ -36,6 +36,7 @@ p{margin:0}
 .btn:hover{background:#B5DEDA}
 .link{font-size:15px;font-weight:500;border-bottom:1px solid currentColor;padding-bottom:2px}
 .dark{background:var(--ink);color:#F4F4F1}
+#planes,#como{scroll-margin-top:88px}
 .nav{position:sticky;top:0;z-index:50;background:rgba(20,32,48,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;color:#F4F4F1;font-weight:600;font-size:16px}
@@ -130,7 +131,15 @@ section{padding:104px 0}
 .feat p{color:var(--mute);font-size:14.5px;line-height:1.55}
 @media(max-width:900px){.feats{grid-template-columns:1fr 1fr}.feat:nth-child(3){padding-left:0;border-left:0}.feat:nth-child(n+3){border-top:1px solid var(--line)}}
 @media(max-width:560px){.feats{grid-template-columns:1fr}.feat+.feat{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
+.plan .sub{color:var(--ink);font-size:15.5px;margin-top:12px;font-weight:500;line-height:1.45}
+.plan ul{margin:14px 0 0;padding:0;list-style:none}
+.plan li{position:relative;padding-left:18px;margin-top:9px;color:var(--mute);font-size:14.5px;line-height:1.5}
+.plan li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.planfoot{margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.planfoot p{color:var(--mute);font-size:14px;line-height:1.55}
+.planfoot b{color:var(--ink);font-weight:500}
+@media(max-width:860px){.planfoot{grid-template-columns:1fr}}
 .plan{background:#fff;border:1px solid var(--line);padding:28px 26px}
 .plan.hl{border:2px solid var(--teal)}
 .plan h3{font-size:24px}
@@ -171,7 +180,7 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
 <body>
 <header class="nav"><div class="wrap">
  <a href="/" class="brand"><svg width="24" height="29" viewBox="0 0 366 440" aria-hidden="true"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>Darwin Optima</a>
- <div class="nav-r"><a class="hide-m" href="/productos">Soluciones</a><a class="hide-m" href="#como">Cómo funciona</a><a class="hide-m lang" href="/en" lang="en" hreflang="en"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>English</a><a class="btn" href="mailto:augusto@darwinoptima.com?subject=Quiero%20ACS" onclick="window.umami&&umami.track('Quiero ACS (nav)')">Quiero ACS</a></div>
+ <div class="nav-r"><a class="hide-m" href="/productos">Soluciones</a><a class="hide-m" href="#como">Cómo funciona</a><a class="hide-m" href="#planes">Planes</a><a class="hide-m lang" href="/en" lang="en" hreflang="en"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>English</a><a class="btn" href="mailto:augusto@darwinoptima.com?subject=Quiero%20ACS" onclick="window.umami&&umami.track('Quiero ACS (nav)')">Quiero ACS</a></div>
 </div></header>
 
 <section class="dark hero"><div class="wrap grid">
@@ -204,12 +213,41 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
  <div class="head"><p class="eyebrow">Además</p><h2>Tu sistema, no una cuenta más.</h2></div>
  <div class="feats"><div class="feat"><b>Instancia propia</b><p>Tu base de datos y tu subdominio. No compartes nada con otro negocio.</p></div><div class="feat"><b>Correos con tu dominio</b><p>La confirmación y el cambio de contraseña salen con tu nombre.</p></div><div class="feat"><b>Cada cliente ve solo lo suyo</b><p>Permisos por fila: nadie ve el historial de otro.</p></div><div class="feat"><b>Tus datos son tuyos</b><p>Si te vas, te llevas todo el historial.</p></div></div>
 </div></section>
-<section class="light" style="padding-top:20px"><div class="wrap">
- <div class="head"><p class="eyebrow">Planes</p><h2>Implementación única <em>y una mensualidad simple.</em></h2></div>
+<section class="light" style="padding-top:20px" id="planes"><div class="wrap">
+ <div class="head"><p class="eyebrow">Planes</p><h2>Dos versiones. <em>La diferencia es cuánto trabajo te quita.</em></h2></div>
  <div class="plans">
-  <div class="plan"><h3>Implementación</h3><div class="pr">Desde US$120 <small>pago único</small></div><p>Diagnóstico, tu instancia propia, tus horarios reales, la ficha de tu rubro, tu Google Calendar, tu subdominio y acompañamiento en el arranque.</p></div>
-  <div class="plan"><h3>Esencial</h3><div class="pr">US$24 <small>al mes</small></div><p>Agenda con horarios fijos y sesiones puntuales, portal para cada cliente, ficha e historial, panel, sincronización con Google Calendar, hosting y respaldos.</p></div>
-  <div class="plan hl"><h3>Crecimiento</h3><div class="pr">US$40 <small>al mes</small></div><p>Todo lo de Esencial, más registro manual de clientes desde el panel, reportes de ocupación y evolución, y soporte prioritario en 24 horas.</p></div>
+  <div class="plan"><h3>Esencial</h3><div class="pr">US$24 <small>al mes</small></div>
+   <p class="sub">El sistema de agenda completo, funcionando solo.</p>
+   <ul>
+    <li>Portal propio para cada cliente, con autoregistro por código</li>
+    <li>Horario fijo semanal y sesiones puntuales</li>
+    <li>Tu cliente reagenda y cancela solo, con la anticipación que tú definas</li>
+    <li>Ficha e historial sesión a sesión, que tu cliente también ve</li>
+    <li>Panel con tu día, tus clientes y el mes completo</li>
+    <li>Agendas tú mismo desde la ficha de cualquier cliente</li>
+    <li>Tu horario de atención, editable por ti desde el panel</li>
+    <li>Google Calendar: eventos reales y 12 semanas siempre creadas por delante</li>
+    <li>«¿Tu horario sigue igual?» automático cada 30, 60 o 90 días</li>
+    <li>Instancia propia, correos con tu dominio, hosting y respaldos</li>
+   </ul></div>
+  <div class="plan hl"><h3>Crecimiento</h3><div class="pr">US$40 <small>al mes</small></div>
+   <p class="sub">Todo lo de Esencial, y además dejas de entrar al panel: le hablas.</p>
+   <ul>
+    <li>Asistente por texto o por voz, desde el panel o por Telegram</li>
+    <li>Le pides tu agenda, buscas un cliente, lo registras, agendas, reagendas o cancelas hablándole</li>
+    <li>Antes de cambiar algo te lo resume y te pide confirmación: nunca actúa solo</li>
+    <li>Le reenvías la captura de un WhatsApp y él registra la cita</li>
+    <li>Buenos días a las 6:30 a.&nbsp;m. con tu agenda del día</li>
+    <li>Pantalla de recordatorios: las sesiones de mañana con el mensaje ya escrito</li>
+    <li>Aviso automático cuando un cliente reserva, reagenda o cancela</li>
+    <li>Reenvías el acceso de un cliente por WhatsApp desde el panel</li>
+    <li>Reportes de ocupación y evolución</li>
+    <li>Soporte prioritario en 24 horas</li>
+   </ul></div>
+ </div>
+ <div class="planfoot">
+  <p><b>Implementación: desde US$120, pago único.</b> Diagnóstico, tu instancia propia, tus horarios reales, la ficha de tu rubro, tu Google Calendar, tu subdominio y acompañamiento en el arranque.</p>
+  <p><b>Precios de introducción.</b> Se revisan una vez al año.</p>
  </div>
 </div></section>
 <section class="dark cta"><div class="wrap">
