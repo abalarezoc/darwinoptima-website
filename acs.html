@@ -140,7 +140,15 @@ section{padding:104px 0}
 .plan.hl{border:2px solid var(--teal)}
 .plan h3{font-size:24px}
 .plan .pr{font-family:var(--serif);font-size:38px;margin-top:10px}
-.plan .pr small{font-family:var(--sans);font-size:14px;color:var(--mute)}
+.plan .pr small{font-family:var(--sans);font-size:14px;color:var(--mute);
+  /* Que baje entera en vez de partirse: "base, una / sola vez" se leía mal. */
+  white-space:nowrap}
+/* El precio estándar, al lado del de introducción: hace visible que el
+   descuento vale algo hoy, y que tiene fecha de fin. */
+.plan .antes{font-family:var(--sans);font-size:15px;color:var(--mute);
+  text-decoration:line-through;margin-left:8px;vertical-align:4px}
+.plan .desde{display:block;font-family:var(--sans);font-size:13px;
+  color:var(--mute);margin-top:6px;line-height:1.4}
 .plan p{color:var(--mute);font-size:15px;margin-top:12px}
 .plan.impl{background:transparent}
 .plan.impl h3{font-size:20px}
@@ -220,7 +228,7 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
 <section class="light" style="padding-top:20px" id="planes"><div class="wrap">
  <div class="head"><p class="eyebrow">Planes</p><h2>Dos versiones. <em>La diferencia es cuánto trabajo te quita.</em></h2></div>
  <div class="plans">
-  <aside class="plan impl"><h3>Implementación</h3><div class="pr">US$120 <small>base, una sola vez</small></div>
+  <aside class="plan impl"><h3>Implementación</h3><div class="pr">US$120 <span class="antes">US$190</span> <small>base, una sola vez</small><span class="desde">Desde el 1 de abril de 2027: US$190.</span></div>
    <p class="sub">Lo dejo todo listo y funcionando.</p>
    <ul>
     <li>Tu página armada con tu nombre, tus colores y tus horarios reales</li>
@@ -229,7 +237,7 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
     <li>Te acompaño en las primeras semanas</li>
    </ul>
    <p class="fine">La implementación de soluciones más complejas se cotiza por separado, según el caso.</p></aside>
-  <div class="plan"><h3>Esencial</h3><div class="pr">US$24 <small>al mes</small></div>
+  <div class="plan"><h3>Esencial</h3><div class="pr">US$24 <span class="antes">US$39</span> <small>al mes</small><span class="desde">Desde el 1 de abril de 2027: US$39 al mes.</span></div>
    <p class="sub">Tu agenda funcionando sola, sin que tú coordines nada.</p>
    <ul>
     <li>Tu cliente entra a su página desde el teléfono, la tablet o la computadora, a cualquier hora y desde cualquier país</li>
@@ -243,7 +251,7 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
     <li>El sistema le pregunta cada tanto a tu cliente si sigue viniendo, para que no te queden horas apartadas</li>
     <li>Tu página lleva tu nombre y tus colores, y tus datos no se mezclan con los de nadie</li>
    </ul></div>
-  <div class="plan hl"><h3>Crecimiento</h3><div class="pr">US$40 <small>al mes</small></div>
+  <div class="plan hl"><h3>Crecimiento</h3><div class="pr">US$40 <span class="antes">US$65</span> <small>al mes</small><span class="desde">Desde el 1 de abril de 2027: US$65 al mes.</span></div>
    <p class="sub">Todo lo anterior, y además dejas de entrar a la pantalla: le hablas.</p>
    <ul>
     <li>Un asistente dentro de Telegram al que le escribes o le hablas, como a una persona</li>
@@ -258,7 +266,7 @@ footer a{color:inherit}footer .tel a{white-space:nowrap}
    </ul>
    <p class="fine"><b>El consumo de inteligencia artificial va aparte:</b> entre US$3 y US$15 al mes según cuánto uses el asistente, las notas de voz y la lectura de capturas. El resto del sistema no usa IA.</p></div>
  </div>
- <p class="pricenote"><b>Precios de introducción.</b> Se revisan una vez al año.</p>
+ <p class="pricenote"><b>Precios de introducción hasta el 31 de marzo de 2027.</b> Si entras antes de esa fecha, mantienes tu precio <b>12 meses desde tu alta</b>, aunque la lista suba. Después se revisan una vez al año y te aviso con 60 días.</p>
 </div></section>
 <section class="dark cta"><div class="wrap">
  <p class="eyebrow">En una o dos semanas</p>
