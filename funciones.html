@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Todo lo que hace ACS — Darwin Optima</title>
+<meta name="description" content="Un día completo con ACS, hora por hora: la agenda que se ordena sola, la ficha que no se pierde y el asistente que avisa sin que se lo pidan.">
+<link rel="canonical" href="https://darwinoptima.com/funciones">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Mismos tokens que acs.html para que esta página sea la misma casa. */
+:root{
+  --ink:#142030;--ink-2:#0E1824;--paper:#F4F4F1;--mint:#9CD1CC;--teal:#3F7D76;
+  --mute:#5B6670;--mute-d:#A9B3B8;--line:rgba(20,32,48,.12);--line-d:rgba(244,244,241,.12);
+  --acc:#2A6F77;--acc-t:#e1eff0;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wrap:1120px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,5.6vw,68px);line-height:1.04}
+h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1}
+h3{font-size:22px;line-height:1.25}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--mint)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 16px}
+.dark .eyebrow{color:var(--mint)}
+.lede{font-size:clamp(17px,1.5vw,19px);max-width:62ch;color:var(--mute)}
+.dark .lede{color:var(--mute-d)}
+
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:2px;font-size:15px;font-weight:500;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s}
+.btn-m{background:var(--mint);color:var(--ink)}
+.btn-m:hover{background:#b4dcd8}
+.btn-o{border-color:var(--line-d);color:var(--paper)}
+.btn-o:hover{border-color:var(--mint);color:var(--mint)}
+.btn-t{background:var(--teal);color:var(--paper)}
+.btn-t:hover{background:#4a8f87}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* barra, igual que la de acs.html */
+.nav{background:var(--ink);padding:16px 0;position:sticky;top:0;z-index:30}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--paper);font-family:var(--serif);font-size:19px}
+.nav-r{display:flex;align-items:center;gap:22px;font-size:15px;color:var(--mute-d)}
+.nav-r a:hover{color:var(--mint)}
+@media(max-width:760px){.hide-m{display:none}}
+
+.dark{background:var(--ink);color:var(--paper)}
+.dark h1,.dark h2,.dark h3{color:var(--paper)}
+.sec{padding:clamp(54px,8vw,92px) 0}
+.sec+.sec:not(.dark){border-top:1px solid var(--line)}
+.cab{max-width:62ch}
+.cab .lede{margin-top:16px}
+
+.hero{padding:clamp(54px,8vw,96px) 0 clamp(44px,6vw,76px)}
+.hero h1{max-width:18ch}
+.hero .lede{margin-top:20px}
+
+/* el día */
+.momentos{margin-top:clamp(40px,6vw,66px);display:grid;gap:clamp(40px,6vw,66px)}
+.momento{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 30px}
+.hora{font-family:var(--sans);font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--mint);padding-left:19px;position:relative}
+.hora::before{content:"";position:absolute;left:0;top:.56em;width:9px;height:9px;border-radius:50%;background:var(--mint)}
+.mcuerpo{min-width:0}
+.mcuerpo h3{max-width:26ch}
+.mcuerpo>p{color:var(--mute-d);margin-top:11px;max-width:58ch}
+.sello{display:inline-block;margin-top:13px;padding:4px 11px;background:var(--mint);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+.tags span{font-size:13px;color:var(--mute-d);border:1px solid var(--line-d);padding:4px 11px}
+figure{margin:20px 0 0}
+figure img{border:1px solid var(--line-d);box-shadow:0 18px 44px rgba(0,0,0,.3)}
+figcaption{font-size:13px;color:var(--mute-d);margin-top:9px}
+
+/* tarjeta de mensaje: texto del aviso, no una captura */
+.msg{margin-top:20px;max-width:520px;background:rgba(244,244,241,.05);border:1px solid var(--line-d);padding:20px 22px}
+.msg .de{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:11px}
+.msg p{color:var(--paper);font-size:16px;line-height:1.58}
+.msg p+p{margin-top:8px}
+.msg .nota{font-size:13px;color:var(--mute-d);margin-top:13px}
+.bot{display:flex;gap:8px;margin-top:14px}
+.bot b{font-size:13px;font-weight:600;padding:6px 14px;background:var(--mint);color:var(--ink)}
+.bot i{font-style:normal;font-size:13px;padding:6px 14px;border:1px solid var(--line-d);color:var(--mute-d)}
+
+.rej{display:grid;gap:24px;margin-top:40px}
+.r3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.r2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);padding:26px}
+.card h3{margin-bottom:9px}
+.card p{font-size:15px;color:var(--mute)}
+.card ul{margin:13px 0 0;padding:0;list-style:none}
+.card li{position:relative;padding-left:18px;margin-top:8px;font-size:15px;color:var(--mute)}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.card li.no{color:#9aa4a9}
+.card li.no::before{background:#d3dadd}
+.dark .card{background:rgba(244,244,241,.05);border-color:var(--line-d)}
+.dark .card p,.dark .card li{color:var(--mute-d)}
+
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px;align-items:center;margin-top:40px}
+.duo img{border:1px solid var(--line);box-shadow:0 18px 44px rgba(20,32,48,.1)}
+
+.tsc{overflow-x:auto;margin-top:38px;border:1px solid var(--line);background:#fff}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);background:var(--acc-t)}
+tbody tr:last-child td{border-bottom:none}
+td strong{font-weight:600}
+
+.planes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.plan{background:#fff;border:1px solid var(--line);padding:30px;display:flex;flex-direction:column}
+.plan.dest{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.plan h3{margin:10px 0 6px;font-size:30px}
+.plan .para{font-size:15px;color:var(--mute);margin-bottom:16px}
+.plan ul{margin:0;padding:0;list-style:none;flex:1}
+.plan li{position:relative;padding-left:20px;margin-top:9px;font-size:15px}
+.plan li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.plan li.no{color:#9aa4a9}
+.plan li.no::before{background:#d3dadd}
+
+.pasos{margin-top:40px;border:1px solid var(--line);background:#fff}
+.paso{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:18px 24px;border-bottom:1px solid var(--line);align-items:baseline}
+.paso:last-child{border-bottom:none}
+.paso b{color:var(--teal);font-weight:600;font-variant-numeric:tabular-nums;font-size:15px}
+.paso strong{display:block;font-weight:600;font-size:16px}
+.paso p{font-size:15px;color:var(--mute);margin-top:2px}
+
+footer{background:var(--ink-2);color:var(--mute-d);padding:34px 0 44px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+@media(max-width:900px){.r3,.r2,.planes,.duo{grid-template-columns:1fr}}
+@media(max-width:620px){.momento{grid-template-columns:1fr}.hora{margin-bottom:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a href="/" class="brand"><svg width="24" height="29" viewBox="0 0 366 440" aria-hidden="true"><path fill="#9CD1CC" d="M 365 183 A 108.5 108.5 0 1 0 256.5 291.5 L 256.5 183 Z M 256.5 0 A 183 183 0 0 0 256.5 366 L 256.5 331.5 A 148.5 148.5 0 0 1 256.5 34.5 Z M 0 183 A 256.5 256.5 0 0 0 256.5 439.5 L 256.5 405.5 A 222.5 222.5 0 0 1 34 183 Z"/></svg>Darwin Optima</a>
+  <div class="nav-r">
+    <a class="hide-m" href="/acs">ACS</a>
+    <a class="hide-m" href="/acs#planes">Planes</a>
+    <a class="btn btn-m" href="mailto:augusto@darwinoptima.com?subject=Quiero%20ACS" onclick="window.umami&amp;&amp;umami.track('Quiero ACS (funciones nav)')">Quiero ACS</a>
+  </div>
+</div></header>
+
+<section class="dark hero"><div class="wrap">
+  <p class="eyebrow">Todo lo que hace</p>
+  <h1>Tu agenda debería funcionar <em>aunque no la estés mirando.</em></h1>
+  <p class="lede">Esta es la versión larga. Un martes cualquiera con ACS, hora por hora, y después el detalle de cada pieza. Si quieres la versión corta, está en <a href="/acs" style="color:var(--mint);text-decoration:underline;text-underline-offset:3px">la página de ACS</a>.</p>
+  <div class="ctas">
+    <a class="btn btn-m" href="mailto:augusto@darwinoptima.com?subject=Quiero%20ACS" onclick="window.umami&amp;&amp;umami.track('Quiero ACS (funciones hero)')">Quiero ACS</a>
+    <a class="btn btn-o" href="#el-dia">Ver el día completo</a>
+  </div>
+</div></section>
+
+<section class="dark sec" id="el-dia" style="background:var(--ink-2)"><div class="wrap">
+  <p class="eyebrow">Un martes cualquiera</p>
+  <h2>La diferencia no es lo que haces con el sistema. Es <em>lo que el sistema hace sin ti.</em></h2>
+  <p class="lede" style="margin-top:16px">Un calendario te muestra lo que ya sabías. Esto es un día real y lo que pasa en cada momento. Lo que lleva el sello menta ocurre solo: nadie lo pidió.</p>
+
+  <div class="momentos">
+
+    <article class="momento">
+      <p class="hora">06:45</p>
+      <div class="mcuerpo">
+        <h3>Tu día llega antes que tú al consultorio</h3>
+        <p>Abres Telegram y ya está: cuántos clientes tienes hoy, a qué hora el primero, quién cumple años y a quién le toca control sin haberlo pedido. No entraste a ningún sistema. El mensaje te estaba esperando.</p>
+        <span class="sello">Ocurre solo</span>
+        <div class="msg">
+          <p class="de">Lo que te llega</p>
+          <p><strong>Buenos días.</strong> Hoy tienes 8 sesiones. La primera a las 8:00 con Mariana Quispe.</p>
+          <p>Renzo Alcántara cumple años hoy.</p>
+          <p>A Lucía le toca control: su última sesión fue hace 5 semanas y no ha vuelto a agendar.</p>
+          <p class="nota">Llega a la hora que tú elijas, todos los días, sin que nadie lo dispare.</p>
+        </div>
+        <div class="tags"><span>Resumen de la mañana</span><span>Avisos programados</span><span>Cumpleaños</span><span>Recordatorio de control</span></div>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">07:30</p>
+      <div class="mcuerpo">
+        <h3>Una clienta pide hora desde su casa</h3>
+        <p>Entra a su portal y ve tus horarios libres de verdad: los que quedan después de descontar tu horario de atención, el espacio que dejas entre una cita y otra, y lo que ya está ocupado en tu Google Calendar.</p>
+        <div class="tags"><span>Portal del cliente</span><span>Horarios de atención</span><span>Espacio entre citas</span><span>Google Calendar</span></div>
+        <figure>
+          <img src="https://acs.darwinoptima.com/capturas/portal-agendar.webp" alt="Agendar, reagendar o cancelar desde el portal del cliente" loading="lazy">
+          <figcaption>Agendar, reagendar o cancelar — como lo ve tu cliente.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">08:10</p>
+      <div class="mcuerpo">
+        <h3>Confirmas entre un cliente y otro</h3>
+        <p>Un toque. La cita entra a tu agenda y aparece en tu Google Calendar. Si Google está caído la cita se guarda igual y el calendario se pone al día después: agendar nunca se queda esperando a nadie.</p>
+        <div class="tags"><span>Confirmar · reagendar · cancelar</span><span>Varias sedes</span><span>Sin correos automáticos</span></div>
+        <figure>
+          <img src="https://acs.darwinoptima.com/capturas/panel-agenda.webp" alt="El panel de ACS: el mes completo con todas las sesiones y el detalle del día" loading="lazy">
+          <figcaption>El panel: tu mes completo, y el detalle del día abierto al costado.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">11:20</p>
+      <div class="mcuerpo">
+        <h3>Te cancelan por WhatsApp, como siempre</h3>
+        <p>Porque así te escriben y eso no va a cambiar. Le reenvías la captura al asistente: la lee, reconoce de quién es y qué cita, y te propone cancelarla. Tú tocas el visto bueno. Nada que mueva tu agenda se ejecuta sin que lo confirmes, y lo que se ejecuta es exactamente lo que te mostró.</p>
+        <span class="sello">Propone, no ejecuta</span>
+        <div class="msg">
+          <p class="de">Lo que te responde</p>
+          <p>Leí la captura. Es <strong>Mariana Quispe</strong>, que avisa que no puede venir hoy.</p>
+          <p>Su sesión de hoy 4:30 p.m. — ¿la cancelo?</p>
+          <div class="bot"><b>Sí, cancelar</b><i>Descartar</i></div>
+          <p class="nota">Lo que se confirma es byte a byte lo que se mostró: el modelo no vuelve a intervenir al tocar el botón.</p>
+        </div>
+        <div class="tags"><span>Lee capturas de WhatsApp</span><span>Se confirma lo que viste</span><span>Un reintento no repite el cambio</span></div>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">13:00</p>
+      <div class="mcuerpo">
+        <h3>Preguntas con la voz, sin soltar lo que haces</h3>
+        <p>«¿Qué tengo esta tarde?» en una nota de voz de cuatro segundos. Te contesta con la tarde. Preguntar se responde de una: el freno está solo donde algo cambia.</p>
+        <div class="msg">
+          <p class="de">Lo que te responde</p>
+          <p>«¿Qué tengo esta tarde?»</p>
+          <p>Esta tarde tienes 3 sesiones: 3:00 Renzo Alcántara, 4:30 Mariana Quispe y 6:00 Lucía Ramos. La de las 4:30 está pendiente de confirmar.</p>
+        </div>
+        <div class="tags"><span>Notas de voz</span><span>Preguntas sobre tu agenda</span><span>Asistente también en el panel</span></div>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">15:40</p>
+      <div class="mcuerpo">
+        <h3>Terminas la sesión y la anotas en treinta segundos</h3>
+        <p>Qué trabajaste, cómo respondió, qué toca la próxima vez. Queda en la historia de esa persona para siempre, y lo primero que ves cuando vuelva es en qué quedaron.</p>
+        <div class="tags"><span>Ficha e historia</span><span>Registro de sesión</span><span>Próximo objetivo</span><span>Archivos y documentos</span></div>
+        <figure>
+          <img src="https://acs.darwinoptima.com/capturas/panel-ficha.webp" alt="La ficha de cada cliente, con sus datos, horarios fijos y su historial" loading="lazy">
+          <figcaption>La ficha de cada cliente: datos, horarios fijos y todo lo registrado.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="momento">
+      <p class="hora">19:30</p>
+      <div class="mcuerpo">
+        <h3>Cierras, y tu cliente ya sabe cuándo vuelve</h3>
+        <p>Del otro lado, entra a su portal cuando quiere: sus próximas sesiones, su horario fijo semanal, su avance. No te escribe para preguntar a qué hora era.</p>
+        <div class="tags"><span>Horario fijo semanal</span><span>Su historial</span><span>Sube sus documentos</span></div>
+        <figure>
+          <img src="https://acs.darwinoptima.com/capturas/portal-progreso.webp" alt="El historial del cliente, en su propio portal" loading="lazy">
+          <figcaption>Su historial, en su propio portal — sin pedírtelo a ti.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">El que se fue sin avisar</p>
+    <h2>El cliente que dejó de venir <em>no te manda un correo de despedida</em></h2>
+    <p class="lede">Simplemente no vuelve, y te enteras meses después si te acuerdas de pensarlo. Cada tarjeta muestra el horario fijo, cuántos registros lleva, cuándo fue el último y cómo viene evolucionando. Los cumpleaños que vienen y los clientes nuevos sin revisar quedan arriba.</p>
+  </div>
+  <div class="duo">
+    <div>
+      <h3>Lo que cambia</h3>
+      <p style="margin-top:11px;color:var(--mute)">Dejas de descubrir las bajas por casualidad. El sistema las pone donde las vas a ver, y con el plan Crecimiento además te avisa por Telegram antes de que la persona se enfríe del todo.</p>
+    </div>
+    <img src="https://acs.darwinoptima.com/capturas/panel-clientes.webp" alt="Tus clientes, con su estado a la vista en el panel de ACS" loading="lazy">
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Cómo está armado</p>
+    <h2>Tres piezas, <em>un solo sistema</em></h2>
+    <p class="lede">Lo que viste sale de tres lugares que comparten la misma información. Lo que pasa en uno se ve en los otros al instante.</p>
+  </div>
+  <div class="rej r3">
+    <div class="card"><h3>El portal de tu cliente</h3><p>Con tu marca y tu dominio.</p>
+      <ul><li>Sus próximas citas y su horario fijo</li><li>Pedir, reagendar y cancelar</li><li>Su seguimiento y su avance</li><li>Subir documentos e informes</li><li>Registro con código, o alta sin correo</li></ul></div>
+    <div class="card"><h3>Tu panel</h3><p>Donde trabajas tú.</p>
+      <ul><li>Agenda del día y del mes</li><li>Fichas, historia y registro de sesión</li><li>Horarios, servicios y duraciones</li><li>Varias sedes, con agenda propia</li><li>Manual de ayuda con buscador</li></ul></div>
+    <div class="card"><h3>El asistente</h3><p>En Telegram y dentro del panel.</p>
+      <ul><li>Pregúntale por tu agenda</li><li>Agenda y cancela con tu visto bueno</li><li>Entiende notas de voz</li><li>Lee capturas de WhatsApp</li><li>Te avisa sin que se lo pidas</li></ul></div>
+  </div>
+  <div class="duo">
+    <div>
+      <h3>Lo primero que ve tu cliente</h3>
+      <p style="margin-top:11px;color:var(--mute)">Sin manual y sin explicación. Entra, ve cuándo es su próxima sesión y qué puede hacer. Si no entiende esta pantalla en diez segundos el portal no sirve — por eso es la que más veces se rehízo.</p>
+    </div>
+    <img src="https://acs.darwinoptima.com/capturas/portal-inicio.webp" alt="Lo que ve tu cliente al entrar a su portal de ACS" loading="lazy">
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Según tu profesión</p>
+    <h2>El mismo motor, <em>con lo tuyo encendido</em></h2>
+    <p class="lede">La agenda, el portal, la ficha y el asistente son iguales para todos. Lo que cambia es el seguimiento, porque un fisioterapeuta y un dentista no anotan lo mismo.</p>
+  </div>
+  <div class="tsc"><table>
+    <thead><tr><th>Profesión</th><th>Qué registras en cada sesión</th><th>Lo que se enciende</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fisioterapia y rehabilitación</strong></td><td>Zona tratada, tratamiento, dolor del 1 al 10, nivel de mejoría, próximo objetivo</td><td>Horario fijo semanal · Seguimiento clínico de terapias · Consentimiento firmado</td></tr>
+      <tr><td><strong>Coaching y entrenamiento</strong></td><td>Peso, medidas, ánimo, fotos de avance, gráficos y anillo de meta</td><td>Horario fijo semanal · Seguimiento de avance físico</td></tr>
+      <tr><td><strong>Odontología</strong></td><td>Pieza por pieza, tratamiento, estado y plan presupuestado</td><td>Cita suelta · Odontograma · Plan de tratamiento · Consentimiento firmado</td></tr>
+      <tr><td><strong>Mastología y especialidades clínicas</strong></td><td>Estudios con su clasificación, etapa del proceso, requisitos de segunda opinión</td><td>Despistaje por edad y riesgo · Línea de tiempo del proceso · Qué ve la paciente, controlado por ti</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:17px;font-size:15px;color:var(--mute)">¿Tu profesión no está en la lista? Se construye. Es un proyecto de semanas, no una configuración, y se conversa aparte.</p>
+</div></section>
+
+<section class="dark sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Datos de tus clientes</p>
+    <h2>Si trabajas con historias clínicas, <em>esto importa más que cualquier función</em></h2>
+    <p class="lede">En Perú una historia clínica es un dato sensible bajo la Ley 29733. Lo de abajo no son promesas: son decisiones de diseño que puedes verificar.</p>
+  </div>
+  <div class="rej r2">
+    <div class="card"><h3>Tu base de datos es tuya sola</h3><p>Cada consultorio tiene su propio proyecto y su propia base. No compartes servidor ni tabla con ningún otro cliente mío. Si algún día te vas, te llevas tus datos completos, porque no hay nada que separar de los de nadie más.</p></div>
+    <div class="card"><h3>La inteligencia artificial no ve los archivos clínicos</h3><p>Un informe en PDF se guarda y se archiva, pero nunca se le muestra al modelo. Mandarlo sería sacar un dato sensible del país, y no se hace.</p></div>
+    <div class="card"><h3>El consentimiento queda probado</h3><p>Se guarda la versión y la huella digital del texto exacto que la persona aceptó, con fecha y hora. No «aceptó algo alguna vez»: aceptó este texto, este día.</p></div>
+    <div class="card"><h3>Tu calendario no delata a nadie</h3><p>El título del evento no nombra tu especialidad, porque se lee desde una pantalla bloqueada y a veces lo ve alguien más. Qué dice exactamente lo decides tú.</p></div>
+    <div class="card"><h3>Nada se borra sin avisarte</h3><p>Un archivo sin dueño se elimina a los siete días, y solo después de que te avisamos y el aviso tiene dos días encima.</p></div>
+    <div class="card"><h3>Tu cliente ve lo que tú decides</h3><p>Cada campo tiene su interruptor. Si lo apagas, la pestaña no existe y el dato ni siquiera sale del servidor. No es que esté escondido: no viaja.</p></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Sobre la inteligencia artificial</p>
+    <h2>Casi nada de esto usa IA, <em>y es a propósito</em></h2>
+    <p class="lede">La agenda, las fichas, el portal, el seguimiento, el manual y los recordatorios funcionan sin modelo alguno. Si la IA se cayera mañana, tu consultorio sigue operando igual.</p>
+  </div>
+  <div class="rej r2">
+    <div class="card"><h3>Lo único que consume IA</h3>
+      <ul><li>Las preguntas que le haces al asistente</li><li>Las notas de voz</li><li>Leer una captura de WhatsApp</li></ul>
+      <p style="margin-top:15px">Va aparte del plan y al costo, entre US$3 y US$15 al mes. Un consultorio activo real está costando alrededor de US$3 mensuales, con voz incluida.</p></div>
+    <div class="card"><h3>Y el freno lo pones tú</h3>
+      <p>Defines un tope de gasto. Cuando se acerca, el sistema te avisa en tu panel. Si se llega al tope se pausa <strong>solo el asistente</strong>, te explica qué pasó y te ofrece ampliarlo.</p>
+      <p style="margin-top:11px">La agenda, las fichas y el portal siguen enteros. No se te cae el consultorio porque se acabó un accesorio.</p></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Planes</p>
+    <h2>Dos planes, y se cambia de uno a otro <em>en un día</em></h2>
+    <p class="lede">Subir de plan no es rehacerte el sistema ni mudar tus datos. Se te enciende lo nuevo un martes y empiezas a pagarlo el mes siguiente.</p>
+  </div>
+  <div class="planes">
+    <div class="plan">
+      <p class="eyebrow" style="margin:0">Plan</p><h3>Esencial</h3>
+      <p class="para">Para quien lo que necesita es dejar de perder horas coordinando citas.</p>
+      <ul><li>Agenda, horarios de atención y espacio entre citas</li><li>Portal con tu marca y tu dominio</li><li>Tu panel, con fichas e historia</li><li>Horario fijo semanal, si tu profesión lo usa</li><li>Google Calendar</li><li>Archivos y documentos</li><li>Manual de ayuda con buscador</li><li class="no">Sin asistente de Telegram</li><li class="no">Sin avisos automáticos</li><li class="no">Sin módulo de seguimiento</li></ul>
+    </div>
+    <div class="plan dest">
+      <p class="eyebrow" style="margin:0">Plan · el que usan casi todos</p><h3>Crecimiento</h3>
+      <p class="para">Para quien además quiere que el sistema le avise y le ahorre el ida y vuelta.</p>
+      <ul><li>Todo lo del plan Esencial</li><li>Asistente en Telegram y en tu panel</li><li>Notas de voz y lectura de capturas</li><li>Resumen de la mañana, cumpleaños y recordatorios</li><li>El módulo de seguimiento de tu profesión</li><li>Varias sedes, con agenda propia cada una</li></ul>
+    </div>
+  </div>
+  <p style="margin-top:22px;font-size:15px;color:var(--mute)">Los montos vigentes y sus condiciones están en <a href="/acs#planes" style="color:var(--teal);text-decoration:underline;text-underline-offset:3px">la página de ACS</a>. La implementación se cobra una sola vez y el consumo de inteligencia artificial va aparte, al costo.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="cab">
+    <p class="eyebrow">Cómo empezamos</p>
+    <h2>Tu sistema está en pie <em>el mismo día</em></h2>
+    <p class="lede">No es un software que instalas: es un sistema que se arma para tu negocio. El montaje toma menos de una hora. Lo que decide el calendario es cuánto demoras en pasarme esto.</p>
+  </div>
+  <div class="pasos">
+    <div class="paso"><b>01</b><div><strong>Tus sedes</strong><p>Cuáles controlas tú, y en cuáles solo te pasan el día.</p></div></div>
+    <div class="paso"><b>02</b><div><strong>Tus horarios</strong><p>Qué días atiendes en cada sede y en qué franjas.</p></div></div>
+    <div class="paso"><b>03</b><div><strong>Tus servicios</strong><p>Cuánto dura cada tipo de consulta, y si necesitas espacio entre una y otra.</p></div></div>
+    <div class="paso"><b>04</b><div><strong>Tus reglas</strong><p>Los criterios propios de tu profesión. Me los das, los cargo, y tú los revisas: son criterio tuyo, no del sistema.</p></div></div>
+    <div class="paso"><b>05</b><div><strong>Tus políticas</strong><p>Precios, forma de pago y condiciones de cancelación.</p></div></div>
+    <div class="paso"><b>06</b><div><strong>Tu Google Calendar</strong><p>La cuenta, y qué debe decir el evento: nombre completo, iniciales o algo genérico.</p></div></div>
+    <div class="paso"><b>07</b><div><strong>Cómo quieres enterarte de tu día</strong><p>Desde el portal, con un aviso de Telegram a una hora fija, o en tu calendario.</p></div></div>
+    <div class="paso"><b>08</b><div><strong>Los correos a tus clientes</strong><p>Quién los firma y qué dice el asunto.</p></div></div>
+    <div class="paso"><b>09</b><div><strong>Tu código de acceso</strong><p>Con el que tus clientes se registran, y la grafía exacta de tu nombre.</p></div></div>
+  </div>
+</div></section>
+
+<section class="dark sec" style="background:var(--ink-2)"><div class="wrap">
+  <h2 style="max-width:20ch">Lo más rápido es que me cuentes <em>cómo trabajas hoy.</em></h2>
+  <p class="lede" style="margin-top:16px">Veinte minutos. Si ACS no te sirve, te lo digo en esa conversación y no perdiste la tarde.</p>
+  <div class="ctas">
+    <a class="btn btn-m" href="mailto:augusto@darwinoptima.com?subject=Quiero%20ACS" onclick="window.umami&amp;&amp;umami.track('Quiero ACS (funciones cierre)')">Quiero ACS</a>
+    <a class="btn btn-o" href="/acs">Volver a la página de ACS</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>ACS — Agenda, Clientes y Seguimiento · un producto de Darwin Optima</span>
+  <span>Order. Precision. Advantage.</span>
+</div></footer>
+
+</body>
+</html>
